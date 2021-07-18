@@ -1,0 +1,67 @@
+.user-card {
+  margin: 5px;
+  background: white;
+  width: 230px;
+  height: 300px;
+  box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: box-shadow 0.2s ease-in;
+  cursor: pointer;
+}
+
+.user-card:hover {
+  box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.user-card .user-cover {
+  height: 120px;
+  width: 100%;
+  background-color: dodgerblue;
+  position: relative;
+}
+
+.user-card .user-cover .user-avatar {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: -25px;
+  border: 1px solid #fff;
+}
+
+.user-card .user-details {
+  text-align: center;
+  margin-top: 35px;
+  margin-bottom: 25px;
+  width: 80%;
+}
+
+.user-card .user-details .user-name {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.user-card .user-details .user-email {
+  font-size: 12px;
+  color: #666;
+}
+
+.user-card .contact-user {
+  margin-bottom: 15px;
+  height: 35px;
+  width: 80%;
+  border: 0;
+  color: dodgerblue;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
