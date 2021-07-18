@@ -3,17 +3,12 @@ import PropTypes from "prop-types";
 import CardClient from "./CardClient";
 import "./Clients.css";
 import FloatButton from "./FloatButton";
-import { FaSistrix } from "react-icons/fa";
+
+import SerachBar from "./SearchBar";
 const Clients = (props) => {
   return (
     <div className="clientsColumn">
-      <div className="bar">
-        <input type="text" placeholder="Buscar " />
-        <button>
-          <FaSistrix></FaSistrix>
-        </button>
-      </div>
-
+      <SerachBar></SerachBar>
       <div className="clientsRow">
         <CardClient></CardClient>
 

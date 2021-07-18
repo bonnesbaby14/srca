@@ -1,0 +1,69 @@
+.cardProyect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 300px;
+  width: 200px;
+  background-color: #17141d;
+  border-radius: 10px;
+  box-shadow: -1rem 0 3rem #000;
+  transition: 0.4s ease-out;
+  margin: 20px;
+}
+
+.titleProyect {
+  color: white;
+  font-weight: 350;
+}
+
+.emptybarProyect {
+  background-color: #2e3033;
+  margin-top: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.filledbarProyect {
+  margin-top: -10px;
+  width: 0px;
+  height: 100%;
+  background: rgb(0, 154, 217);
+  background: linear-gradient(
+    90deg,
+    rgb(217, 43, 0) 0%,
+    rgb(199, 196, 21) 65%,
+    rgb(51, 255, 0) 100%
+  );
+  transition: 0.6s ease-out;
+}
+
+.cardProyect:hover .filledbarProyect {
+  width: 90%;
+  transition: 0.4s ease-out;
+}
+
+.desProyect {
+  margin: 10px;
+  color: white;
+  text-align: justify;
+  font-size: 0.7rem;
+  margin-top: 50px;
+}
+
+.strokeProyect {
+  stroke: #39ff14;
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+  transition: 0.6s ease-out;
+}
+
+svg {
+  fill: #17141d;
+  stroke-width: 3px;
+  width: 100%;
+}
+
+.cardProyect:hover .strokeProyect {
+  stroke-dashoffset: 100;
+  transition: 0.6s ease-out;
+}

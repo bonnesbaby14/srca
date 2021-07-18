@@ -1,11 +1,11 @@
-.clientsRow {
+.proyectsRow {
   justify-content: center;
 
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
 }
-.clientsColumn {
+.proyectsColumn {
   background: #323131;
   justify-content: center;
   width: 100%;

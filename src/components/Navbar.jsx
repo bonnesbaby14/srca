@@ -40,14 +40,16 @@ const Navbar = (props) => {
               </span>
             </li>
           </NavLink>
-          <li className="PRIORITY">
-            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              PROYECTOS
-            </span>
-          </li>
+          <NavLink to="/proyects">
+            <li className="PRIORITY">
+              <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
+                PROYECTOS
+              </span>
+            </li>
+          </NavLink>
           <li className="COLLECTIONS">
             <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              COLLECTIONS
+              RECIBOS
             </span>
           </li>
           <li className="ARCHIVED">
