@@ -1,4 +1,5 @@
 .float-button {
+  cursor: pointer;
   text-decoration: none;
   position: fixed;
   padding: 8px;
