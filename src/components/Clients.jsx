@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import CardClient from "./CardClient";
 import "./Clients.css";
+import FloatButton from "./FloatButton";
 
 const Clients = (props) => {
   return (
@@ -26,6 +27,7 @@ const Clients = (props) => {
       <CardClient></CardClient>
       <CardClient></CardClient>
       <CardClient></CardClient>
+      <FloatButton></FloatButton>
     </div>
   );
 };

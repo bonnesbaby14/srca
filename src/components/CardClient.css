@@ -1,9 +1,9 @@
 .user-card {
-  margin: 5px;
+  margin: 20px;
   background: white;
   width: 230px;
   height: 300px;
-  box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: -10px 5px 20px rgba(145, 145, 145, 0.301);
   border-radius: 15px;
   overflow: hidden;
   display: flex;
