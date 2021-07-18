@@ -1,4 +1,11 @@
 import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+  Link,
+} from "react-router-dom";
 import PropTypes from "prop-types";
 import "./Navbar.css";
 
@@ -19,19 +26,23 @@ const Navbar = (props) => {
           </div>
         </div>
         <ul>
-          <li className="DASHBOARD">
-            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              DASHBOARD
-            </span>
-          </li>
-          <li className="USERS">
-            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              USERS
-            </span>
-          </li>
+          <NavLink to="/">
+            <li className="DASHBOARD">
+              <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
+                DASHBOARD
+              </span>
+            </li>
+          </NavLink>
+          <NavLink to="/clients">
+            <li className="USERS">
+              <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
+                CLIENTES
+              </span>
+            </li>
+          </NavLink>
           <li className="PRIORITY">
             <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              PRIORITY
+              PROYECTOS
             </span>
           </li>
           <li className="COLLECTIONS">
@@ -69,11 +80,13 @@ const Navbar = (props) => {
               STATS
             </span>
           </li>
-          <li className="SETTINGS">
-            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              SETTINGS
-            </span>
-          </li>
+          <NavLink to="/settings">
+            <li className="SETTINGS">
+              <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
+                SETTINGS
+              </span>
+            </li>
+          </NavLink>
         </ul>
       </div>
     </div>

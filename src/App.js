@@ -1,14 +1,26 @@
 import React from "react";
-import logo from "./logo.svg";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import Clients from "./components/Clients";
 import Navbar from "./components/Navbar";
+import Settings from "./components/Settings";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar></Navbar>
-      <div style={{ border: "solid red", width: "100%" }}>dd</div>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar></Navbar>
+
+        <Switch>
+          <Route exact path="/settings">
+            <Settings></Settings>
+          </Route>
+          <Route exact path="/clients">
+            <Clients></Clients>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
