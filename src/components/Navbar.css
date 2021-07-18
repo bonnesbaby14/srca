@@ -1,0 +1,230 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+#sidebar-menu {
+  background: #229bdc;
+  overflow: hidden;
+  top: 60px;
+  left: 0;
+
+  height: 100vh;
+  width: 55px;
+  color: #abe2ff;
+  font-size: 12px;
+  font-weight: 900;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 300ms cubic-bezier(0, 0.995, 0.99, 1);
+  -ms-transition: all 300ms cubic-bezier(0, 0.995, 0.99, 1);
+  -o-transition: all 300ms cubic-bezier(0, 0.995, 0.99, 1);
+  transition: all 300ms cubic-bezier(0, 0.995, 0.99, 1);
+}
+#sidebar-menu.animate {
+  width: 210px;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 300ms cubic-bezier(0, 0.995, 0.99, 1);
+  -ms-transition: all 300ms cubic-bezier(0, 0.995, 0.99, 1);
+  -o-transition: all 300ms cubic-bezier(0, 0.995, 0.99, 1);
+  transition: all 300ms cubic-bezier(0, 0.995, 0.99, 1);
+}
+
+#toggleMenu {
+  background: #1888c4;
+  height: 37px;
+  cursor: pointer;
+}
+#toggleMenu .list {
+  margin: auto;
+  padding-top: 10px;
+}
+#toggleMenu .list img {
+  width: 50px;
+}
+
+#sidebar-menu li {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/sidemenu-sprite.png")
+    0 0 no-repeat;
+  padding: 15px 0 15px 54px;
+  margin: 1px 4px 1px 4px;
+  list-style: none;
+}
+
+#sidebar-menu ul {
+  margin-top: 11px;
+}
+#sidebar-menu li.DASHBOARD {
+  background-position: 7px 14px;
+}
+#sidebar-menu li.DASHBOARD:hover {
+  background-position: -324px 14px;
+  color: #fff;
+  cursor: pointer;
+}
+#sidebar-menu li.selected.DASHBOARD {
+  background-position: -620px 14px;
+  color: #1888c4;
+  cursor: pointer;
+}
+
+#sidebar-menu li.USERS {
+  background-position: 9px -33px;
+}
+#sidebar-menu li.USERS:hover {
+  background-position: -322px -33px;
+  color: #fff;
+  cursor: pointer;
+}
+#sidebar-menu li.selected.USERS {
+  background-position: -618px -33px;
+  color: #1888c4;
+  cursor: pointer;
+}
+
+#sidebar-menu li.PRIORITY {
+  background-position: 9px -80px;
+}
+#sidebar-menu li.PRIORITY:hover {
+  background-position: -322px -80px;
+  color: #fff;
+  cursor: pointer;
+}
+#sidebar-menu li.selected.PRIORITY {
+  background-position: -618px -80px;
+  color: #1888c4;
+  cursor: pointer;
+}
+
+#sidebar-menu li.COLLECTIONS {
+  background-position: 8px -127px;
+}
+#sidebar-menu li.COLLECTIONS:hover {
+  background-position: -323px -127px;
+  color: #fff;
+  cursor: pointer;
+}
+#sidebar-menu li.selected.COLLECTIONS {
+  background-position: -619px -127px;
+  color: #1888c4;
+  cursor: pointer;
+}
+
+#sidebar-menu li.ARCHIVED {
+  background-position: 8px -175px;
+}
+#sidebar-menu li.ARCHIVED:hover {
+  background-position: -323px -175px;
+  color: #fff;
+  cursor: pointer;
+}
+#sidebar-menu li.selected.ARCHIVED {
+  background-position: -619px -175px;
+  color: #1888c4;
+  cursor: pointer;
+}
+
+#sidebar-menu li.DELETED {
+  background-position: 8px -223px;
+}
+#sidebar-menu li.DELETED:hover {
+  background-position: -323px -223px;
+  color: #fff;
+  cursor: pointer;
+}
+#sidebar-menu li.selected.DELETED {
+  background-position: -619px -223px;
+  color: #1888c4;
+  cursor: pointer;
+}
+
+#sidebar-menu li.TRENDS {
+  background-position: 8px -270px;
+}
+#sidebar-menu li.TRENDS:hover {
+  background-position: -323px -270px;
+  color: #fff;
+  cursor: pointer;
+}
+#sidebar-menu li.selected.TRENDS {
+  background-position: -619px -270px;
+  color: #1888c4;
+  cursor: pointer;
+}
+
+#sidebar-menu li.TASKS {
+  background-position: 7px -319px;
+}
+#sidebar-menu li.TASKS:hover {
+  background-position: -324px -319px;
+  color: #fff;
+  cursor: pointer;
+}
+#sidebar-menu li.selected.TASKS {
+  background-position: -620px -319px;
+  color: #1888c4;
+  cursor: pointer;
+}
+
+#sidebar-menu li.FILTERS {
+  background-position: 7px -365px;
+}
+#sidebar-menu li.FILTERS:hover {
+  background-position: -324px -365px;
+  color: #fff;
+  cursor: pointer;
+}
+#sidebar-menu li.selected.FILTERS {
+  background-position: -620px -365px;
+  color: #1888c4;
+  cursor: pointer;
+}
+
+#sidebar-menu li.STATS {
+  background-position: 7px -413px;
+}
+#sidebar-menu li.STATS:hover {
+  background-position: -324px -413px;
+  color: #fff;
+  cursor: pointer;
+}
+#sidebar-menu li.selected.STATS {
+  background-position: -620px -413px;
+  color: #1888c4;
+  cursor: pointer;
+}
+
+#sidebar-menu li.SETTINGS {
+  background-position: 7px -507px;
+  margin-top: 75px;
+  margin-bottom: 4px;
+}
+#sidebar-menu li.SETTINGS:hover {
+  background-position: -324px -507px;
+  color: #fff;
+  cursor: pointer;
+}
+#sidebar-menu li.selected.SETTINGS {
+  background-position: -620px -507px;
+  color: #1888c4;
+  cursor: pointer;
+}
+
+#sidebar-menu li {
+  padding-left: 4px;
+  height: 15px;
+}
+#sidebar-menu.animate li {
+  padding-left: 54px;
+}
+#sidebar-menu li span {
+  opacity: 0;
+  margin-left: 10px;
+}
+#sidebar-menu li.selected {
+  background-color: #fff;
+  color: #1888c4;
+  border-radius: 4px;
+}
+#sidebar-menu li.selected:hover {
+  color: #1888c4;
+}
