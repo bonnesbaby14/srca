@@ -5,6 +5,7 @@ import Clients from "./components/Clients";
 import Navbar from "./components/Navbar";
 import Proyects from "./components/Proyects";
 import Settings from "./components/Settings";
+import Tickets from "./components/Tickets";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route exact path="/proyects">
             <Proyects></Proyects>
+          </Route>
+          <Route exact path="/tickets">
+            <Tickets></Tickets>
           </Route>
         </Switch>
       </div>

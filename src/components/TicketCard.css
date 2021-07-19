@@ -1,0 +1,26 @@
+.bold {
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+}
+
+.receipt {
+  margin: 10px;
+  margin-top: 20px;
+  width: 300px;
+
+  height: 500px;
+  background: #fff;
+
+  box-shadow: 5px 5px 19px #ccc;
+  padding: 10px;
+}
+
+.logo {
+  width: 200px;
+
+  text-align: center;
+  padding: 20px;
+}

@@ -9,11 +9,15 @@
   box-shadow: -1rem 0 3rem #000;
   transition: 0.4s ease-out;
   margin: 20px;
+  color: white;
 }
 
 .titleProyect {
   color: white;
   font-weight: 350;
+}
+.titleProyect h3 {
+  color: white;
 }
 
 .emptybarProyect {
@@ -49,12 +53,8 @@
   font-size: 0.7rem;
   margin-top: 50px;
 }
-
-.strokeProyect {
-  stroke: #39ff14;
-  stroke-dasharray: 360;
-  stroke-dashoffset: 360;
-  transition: 0.6s ease-out;
+.desProyect span {
+  color: white;
 }
 
 svg {

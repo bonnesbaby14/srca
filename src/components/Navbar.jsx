@@ -47,11 +47,13 @@ const Navbar = (props) => {
               </span>
             </li>
           </NavLink>
-          <li className="COLLECTIONS">
-            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              RECIBOS
-            </span>
-          </li>
+          <NavLink to="/tickets">
+            <li className="COLLECTIONS">
+              <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
+                RECIBOS
+              </span>
+            </li>
+          </NavLink>
           <li className="ARCHIVED">
             <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
               ARCHIVED
