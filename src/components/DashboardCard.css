@@ -6,7 +6,8 @@
   max-width: 100%;
   margin: 20px;
   overflow: hidden;
-  width: 700px;
+  width: 600px;
+  margin: 10px;
 }
 
 .course h6 {
