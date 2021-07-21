@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Proyects from "./components/Proyects";
 import Settings from "./components/Settings";
 import Tickets from "./components/Tickets";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
         <Navbar></Navbar>
 
         <Switch>
+          <Route exact path="/">
+            <Dashboard></Dashboard>
+          </Route>
           <Route exact path="/settings">
             <Settings></Settings>
           </Route>
