@@ -54,7 +54,7 @@ const Navbar = (props) => {
               </span>
             </li>
           </NavLink>
-          <li className="ARCHIVED">
+          {/* <li className="ARCHIVED">
             <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
               ARCHIVED
             </span>
@@ -83,7 +83,7 @@ const Navbar = (props) => {
             <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
               STATS
             </span>
-          </li>
+          </li> */}
           <NavLink to="/settings">
             <li className="SETTINGS">
               <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
