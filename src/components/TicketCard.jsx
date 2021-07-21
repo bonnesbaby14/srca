@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./TicketCard.css";
 import QRCode from "react-qr-code";
 import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 const handlePDF = () => {
