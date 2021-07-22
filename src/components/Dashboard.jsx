@@ -4,10 +4,12 @@ import DashboardCard from "./DashboardCard";
 import "./Dashboard.css";
 import Lienzo from "./Lienzo";
 
+import { FaSistrix } from "react-icons/fa";
+
 const Dashboard = (props) => {
   return (
     <div className="dashboard">
-      <DashboardCard></DashboardCard>
+      <DashboardCard icon={<FaSistrix></FaSistrix>}></DashboardCard>
       <DashboardCard></DashboardCard>
       <DashboardCard></DashboardCard>
       <DashboardCard></DashboardCard>

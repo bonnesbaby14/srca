@@ -1,39 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-import Clients from "./components/Clients";
-import Navbar from "./components/Navbar";
-import Proyects from "./components/Proyects";
-import Settings from "./components/Settings";
-import Tickets from "./components/Tickets";
-import Dashboard from "./components/Dashboard";
+import { UserContext } from "./context/contexts.js";
+import Login from "./components/Login";
+import RouterUser from "./components/RouterUser";
 
-function App() {
+const App = () => {
+  const [user, setUser] = useState(null);
   return (
-    <Router>
-      <div className="App">
-        <Navbar></Navbar>
-
-        <Switch>
-          <Route exact path="/">
-            <Dashboard></Dashboard>
-          </Route>
-          <Route exact path="/settings">
-            <Settings></Settings>
-          </Route>
-          <Route exact path="/clients">
-            <Clients></Clients>
-          </Route>
-          <Route exact path="/proyects">
-            <Proyects></Proyects>
-          </Route>
-          <Route exact path="/tickets">
-            <Tickets></Tickets>
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <UserContext.Provider value={{ user, setUser }}>
+      <Router>
+        <div className="App">
+          {user ? <RouterUser></RouterUser> : <Login></Login>}
+        </div>
+      </Router>
+    </UserContext.Provider>
   );
-}
+};
 
 export default App;
