@@ -1,12 +1,6 @@
 import React, { useContext, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-  Link,
-} from "react-router-dom";
-import PropTypes from "prop-types";
+import { BrowserRouter as NavLink } from "react-router-dom";
+
 import "./Navbar.css";
 
 import { UserContext } from "../context/contexts";
@@ -108,7 +102,5 @@ const Navbar = (props) => {
     </div>
   );
 };
-
-Navbar.propTypes = {};
 
 export default Navbar;

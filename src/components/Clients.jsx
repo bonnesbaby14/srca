@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import CardClient from "./CardClient";
 import "./Clients.css";
 import FloatButton from "./FloatButton";
@@ -35,7 +35,5 @@ const Clients = (props) => {
     </div>
   );
 };
-
-Clients.propTypes = {};
 
 export default Clients;

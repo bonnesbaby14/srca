@@ -1,5 +1,5 @@
-import React, { Fragment, useRef } from "react";
-import PropTypes from "prop-types";
+import React, { useRef } from "react";
+
 import "./Lienzo.css";
 import SignatureCanvas from "react-signature-canvas";
 
@@ -38,7 +38,5 @@ const Lienzo = (props) => {
     </div>
   );
 };
-
-Lienzo.propTypes = {};
 
 export default Lienzo;

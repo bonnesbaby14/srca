@@ -1,5 +1,4 @@
 import { React, useContext } from "react";
-import PropTypes from "prop-types";
 import "./Login.css";
 import { UserContext } from "../context/contexts";
 
@@ -55,9 +54,7 @@ const Login = (props) => {
               </form>
             </div>
             <div>
-              <p>
-                Don't have an account? <a href="#">Register Here</a>
-              </p>
+              <p>Don't have an account?</p>
             </div>
           </div>
         </div>
@@ -65,7 +62,5 @@ const Login = (props) => {
     </div>
   );
 };
-
-Login.propTypes = {};
 
 export default Login;

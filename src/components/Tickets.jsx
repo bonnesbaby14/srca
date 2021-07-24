@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import FloatButton from "./FloatButton";
 import SerachBar from "./SearchBar";
 import "./Tickets.css";
@@ -23,7 +23,5 @@ const Tickets = (props) => {
     </div>
   );
 };
-
-Tickets.propTypes = {};
 
 export default Tickets;

@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import "./ProyectCard.css";
 
 const ProyectCard = (props) => {
@@ -25,7 +25,5 @@ const ProyectCard = (props) => {
     </div>
   );
 };
-
-ProyectCard.propTypes = {};
 
 export default ProyectCard;

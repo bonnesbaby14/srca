@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import { FaUserPlus } from "react-icons/fa";
 
 import "./FloatButton.css";
@@ -13,7 +13,5 @@ const FloatButton = (props) => {
     </div>
   );
 };
-
-FloatButton.propTypes = {};
 
 export default FloatButton;

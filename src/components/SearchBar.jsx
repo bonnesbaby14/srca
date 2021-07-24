@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import "./SearchBar.css";
 import { FaSistrix } from "react-icons/fa";
 
@@ -13,7 +13,5 @@ const SerachBar = (props) => {
     </div>
   );
 };
-
-SerachBar.propTypes = {};
 
 export default SerachBar;

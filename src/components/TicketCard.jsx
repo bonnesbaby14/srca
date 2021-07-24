@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import "./TicketCard.css";
 import QRCode from "react-qr-code";
 import html2canvas from "html2canvas";
@@ -120,7 +120,5 @@ const TicketCard = (props) => {
     </>
   );
 };
-
-TicketCard.propTypes = {};
 
 export default TicketCard;

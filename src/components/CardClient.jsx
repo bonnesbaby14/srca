@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import "./CardClient.css";
 
 const CardClient = (props) => {
@@ -10,7 +10,7 @@ const CardClient = (props) => {
           className="user-avatar"
           src="
   https://yossiabramov.com/images/avatar.jpeg"
-          alt="user profile image"
+          alt="user profile"
         />
       </div>
       <div className="user-details">
@@ -21,7 +21,5 @@ const CardClient = (props) => {
     </div>
   );
 };
-
-CardClient.propTypes = {};
 
 export default CardClient;

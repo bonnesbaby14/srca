@@ -1,6 +1,6 @@
 import { React, Suspense } from "react";
 import { BrowserRouter as Switch, Route } from "react-router-dom";
-import PropTypes from "prop-types";
+
 import Clients from "../components/Clients";
 
 import Navbar from "../components/Navbar";
