@@ -1,14 +1,14 @@
-import { React, Suspense } from "react";
+import { React, Suspense, lazy } from "react";
 import { BrowserRouter as Switch, Route } from "react-router-dom";
 
-import Clients from "../components/Clients";
-
 import Navbar from "../components/Navbar";
-import Proyects from "../components/Proyects";
-import Settings from "../components/Settings";
-import Tickets from "../components/Tickets";
-import Dashboard from "../components/Dashboard";
+
 // const WomanScreen = lazy(() => import("../pages/WomanScreen"));
+const Clients = lazy(() => import("../components/Clients"));
+const Proyects = lazy(() => import("../components/Proyects"));
+const Settings = lazy(() => import("../components/Settings"));
+const Tickets = lazy(() => import("../components/Tickets"));
+const Dashboard = lazy(() => import("../components/Dashboard"));
 
 const AppRouter = () => {
   return (

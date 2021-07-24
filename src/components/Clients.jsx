@@ -11,7 +11,6 @@ const Clients = (props) => {
       <SerachBar></SerachBar>
       <div className="clientsRow">
         <CardClient></CardClient>
-
         <CardClient></CardClient>
         <CardClient></CardClient>
         <CardClient></CardClient>

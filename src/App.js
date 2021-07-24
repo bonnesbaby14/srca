@@ -17,9 +17,11 @@ const App = () => {
   }, [log]);
 
   return (
-    <UserContext.Provider value={{ log, setUser }}>
-      <LoginRouter></LoginRouter>
-    </UserContext.Provider>
+    <div className="App">
+      <UserContext.Provider value={{ log, setUser }}>
+        <LoginRouter></LoginRouter>
+      </UserContext.Provider>
+    </div>
   );
 };
 
