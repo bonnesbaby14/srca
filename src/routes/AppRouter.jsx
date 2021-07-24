@@ -19,18 +19,10 @@ const AppRouter = () => {
           <Route exact path="/">
             <Dashboard></Dashboard>
           </Route>
-          <Route exact path="/settings">
-            <Settings></Settings>
-          </Route>
-          <Route exact path="/clients">
-            <Clients></Clients>
-          </Route>
-          <Route exact path="/proyects">
-            <Proyects></Proyects>
-          </Route>
-          <Route exact path="/tickets">
-            <Tickets></Tickets>
-          </Route>
+          <Route exact path="/settings" component={Settings} />
+          <Route exact path="/clients" component={Clients} />
+          <Route exact path="/proyects" component={Proyects} />
+          <Route exact path="/tickets" component={Tickets} />
         </Switch>
       </Suspense>
     </>
