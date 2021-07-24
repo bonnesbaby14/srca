@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PropTypes from "prop-types";
+
 import Clients from "./Clients";
 import Navbar from "./Navbar";
 import Proyects from "./Proyects";
@@ -33,7 +33,5 @@ const RouterUser = (props) => {
     </>
   );
 };
-
-Router.propTypes = {};
 
 export default RouterUser;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,8 +9,15 @@ import {
 import PropTypes from "prop-types";
 import "./Navbar.css";
 
+import { UserContext } from "../context/contexts";
+
 const Navbar = (props) => {
   const [sideBar, setSidebar] = useState(false);
+  const { setUser } = useContext(UserContext);
+  const handleLogout = (e) => {
+    e.preventDefault();
+    setUser({ type: "logout" });
+  };
 
   return (
     <div id="wrapper">
@@ -84,6 +91,11 @@ const Navbar = (props) => {
               STATS
             </span>
           </li> */}
+          <li className="SETTINGS" onClick={handleLogout}>
+            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
+              SETTINGS
+            </span>
+          </li>
           <NavLink to="/settings">
             <li className="SETTINGS">
               <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
