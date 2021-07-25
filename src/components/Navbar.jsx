@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import { FaHome } from "react-icons/fa";
 import "./Navbar.css";
 import "./Navbar.css";
 
@@ -8,7 +8,9 @@ import { UserContext } from "../context/contexts";
 
 const Navbar = (props) => {
   const [sideBar, setSidebar] = useState(false);
+
   const { setUser } = useContext(UserContext);
+
   const handleLogout = (e) => {
     e.preventDefault();
     setUser({ type: "logout" });
@@ -28,11 +30,18 @@ const Navbar = (props) => {
           </div>
         </div>
         <ul>
-          <NavLink to="/">
+          <NavLink to="/" className="noStyle">
             <li className="DASHBOARD">
-              <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-                DASHBOARD
-              </span>
+              <div className="divSVG">
+                <FaHome color="#FFF" size="2.5em" />
+              </div>
+              <div className="divSPAN">
+                <span
+                  style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}
+                >
+                  DASHBOARD
+                </span>
+              </div>
             </li>
           </NavLink>
           <NavLink to="/clients">
