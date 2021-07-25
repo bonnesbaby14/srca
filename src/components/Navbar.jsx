@@ -1,6 +1,13 @@
 import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
+import {
+  FaHome,
+  FaUserFriends,
+  FaMobileAlt,
+  FaCog,
+  FaSignOutAlt,
+  FaTicketAlt,
+} from "react-icons/fa";
 import "./Navbar.css";
 import "./Navbar.css";
 
@@ -31,9 +38,9 @@ const Navbar = (props) => {
         </div>
         <ul>
           <NavLink to="/" className="noStyle">
-            <li className="DASHBOARD">
+            <li className="">
               <div className="divSVG">
-                <FaHome color="#FFF" size="2.5em" />
+                <FaHome color="#FFF" size="2em" />
               </div>
               <div className="divSPAN">
                 <span
@@ -44,67 +51,72 @@ const Navbar = (props) => {
               </div>
             </li>
           </NavLink>
-          <NavLink to="/clients">
-            <li className="USERS">
-              <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-                CLIENTES
-              </span>
+
+          <NavLink to="/clients" className="noStyle">
+            <li className="">
+              <div className="divSVG">
+                <FaUserFriends color="#FFF" size="2em" />
+              </div>
+              <div className="divSPAN">
+                <span
+                  style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}
+                >
+                  CLIENTES
+                </span>
+              </div>
             </li>
           </NavLink>
-          <NavLink to="/proyects">
-            <li className="PRIORITY">
-              <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-                PROYECTOS
-              </span>
+          <NavLink to="/proyects" className="noStyle">
+            <li className="">
+              <div className="divSVG">
+                <FaMobileAlt color="#FFF" size="2em" />
+              </div>
+              <div className="divSPAN">
+                <span
+                  style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}
+                >
+                  PROYECTOS
+                </span>
+              </div>
             </li>
           </NavLink>
-          <NavLink to="/tickets">
-            <li className="COLLECTIONS">
-              <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-                RECIBOS
-              </span>
+          <NavLink to="/tickets" className="noStyle">
+            <li className="">
+              <div className="divSVG">
+                <FaTicketAlt color="#FFF" size="2em" />
+              </div>
+              <div className="divSPAN">
+                <span
+                  style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}
+                >
+                  RECIBOS
+                </span>
+              </div>
             </li>
           </NavLink>
-          {/* <li className="ARCHIVED">
-            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              ARCHIVED
-            </span>
-          </li>
-          <li className="DELETED">
-            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              DELETED
-            </span>
-          </li>
-          <li className="TRENDS">
-            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              TRENDS
-            </span>
-          </li>
-          <li className="TASKS">
-            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              TASKS
-            </span>
-          </li>
-          <li className="FILTERS">
-            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              FILTERS
-            </span>
-          </li>
-          <li className="STATS">
-            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              STATS
-            </span>
-          </li> */}
-          <li className="SETTINGS" onClick={handleLogout}>
-            <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-              SETTINGS
-            </span>
-          </li>
-          <NavLink to="/settings">
-            <li className="SETTINGS">
+
+          <li className="" onClick={handleLogout} className="noStyle">
+            <div className="divSVG">
+              <FaSignOutAlt color="#FFF" size="2em" />
+            </div>
+            <div className="divSPAN">
               <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-                SETTINGS
+                LOGOUT
               </span>
+            </div>
+          </li>
+          <NavLink to="/settings" className="noStyle">
+            <li className="">
+              <div className="divSVG">
+                <FaCog color="#FFF" size="2em" />
+              </div>
+              <div className="divSPAN">
+                <span
+                  style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}
+                >
+                  SETTINGS
+                </span>
+              </div>
             </li>
           </NavLink>
         </ul>
