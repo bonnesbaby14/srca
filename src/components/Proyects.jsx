@@ -16,9 +16,6 @@ const Proyects = (props) => {
         <ProyectCard></ProyectCard>
         <ProyectCard></ProyectCard>
         <ProyectCard></ProyectCard>
-        <ProyectCard></ProyectCard>
-        <ProyectCard></ProyectCard>
-        <ProyectCard></ProyectCard>
       </div>
     </div>
   );
