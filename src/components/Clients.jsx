@@ -8,21 +8,23 @@ import FloatButton from "./FloatButton";
 import SerachBar from "./SearchBar";
 
 const Clients = (props) => {
-  const { log } = useContext(UserContext);
+  const { log, setUser } = useContext(UserContext);
   const [clients, setClients] = useState([]);
   const getData = async () => {
     const data = await fetch("http://localhost:5000/clients", {
-      method: "POST",
+      method: "GET",
       headers: {
         Accept: "application/json",
         Authorization: log.authKey,
         // 'Content-Type': 'application/json'
       },
-
-      body: JSON.stringify({ messeage: "holi" }),
     });
-    const clients = await data.json();
-    setClients(clients);
+    if (data.status === 401) {
+      setUser({ type: "logout" });
+    } else {
+      const clients = await data.json();
+      setClients(clients);
+    }
   };
 
   useEffect(() => {

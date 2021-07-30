@@ -16,10 +16,19 @@ import { UserContext } from "../context/contexts";
 const Navbar = (props) => {
   const [sideBar, setSidebar] = useState(false);
 
-  const { setUser } = useContext(UserContext);
+  const { log, setUser } = useContext(UserContext);
 
-  const handleLogout = (e) => {
-    e.preventDefault();
+  const handleLogout = async (e) => {
+    await e.preventDefault();
+    const data = await fetch("http://localhost:5000/logout", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: log.authKey,
+        // 'Content-Type': 'application/json'
+      },
+    });
+    console.log("se salio");
     setUser({ type: "logout" });
   };
 
