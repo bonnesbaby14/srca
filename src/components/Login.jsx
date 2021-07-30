@@ -3,10 +3,19 @@ import "./Login.css";
 import { UserContext } from "../context/contexts";
 
 const Login = (props) => {
-  const { setUser } = useContext(UserContext);
+  const { log, setUser } = useContext(UserContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUser({ type: "login" });
+    fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "React POST Request Example" }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setUser({ type: "login", authKey: data.token });
+      });
   };
 
   return (
