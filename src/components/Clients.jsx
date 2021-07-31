@@ -10,21 +10,25 @@ import SerachBar from "./SearchBar";
 const Clients = (props) => {
   const { log, setUser } = useContext(UserContext);
   const [clients, setClients] = useState([]);
-  const getData = async () => {
-    const data = await fetch("http://localhost:5000/clients", {
+  const getData = () => {
+    fetch("http://localhost:5000/clients", {
       method: "GET",
       headers: {
         Accept: "application/json",
         Authorization: log.authKey,
         // 'Content-Type': 'application/json'
       },
-    });
-    if (data.status === 401) {
-      setUser({ type: "logout" });
-    } else {
-      const client = await data.json();
-      setClients(client);
-    }
+    }).then(
+      (data) => {
+        data.json().then((data) => {
+          setClients(data);
+        });
+      },
+      (err) => {
+        console.log(err);
+        setClients({});
+      }
+    );
   };
 
   useEffect(() => {

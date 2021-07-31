@@ -4,26 +4,30 @@ import "./Proyects.css";
 import ProyectCard from "./ProyectCard";
 
 import SerachBar from "./SearchBar";
+import TicketCard from "./TicketCard";
 
 const Proyects = (props) => {
   const { log, setUser } = useContext(UserContext);
   const [projects, setProjects] = useState([]);
-  const getData = async () => {
-    const data = await fetch("http://localhost:5000/projects", {
+  const getData = () => {
+    fetch("http://localhost:5000/projects", {
       method: "GET",
       headers: {
         Accept: "application/json",
         Authorization: log.authKey,
         // 'Content-Type': 'application/json'
       },
-    });
-
-    if (data.status === 401) {
-      setUser({ type: "logout" });
-    } else {
-      const project = await data.json();
-      setProjects(project);
-    }
+    }).then(
+      (data) => {
+        data.json().then((data) => {
+          setProjects(data);
+        });
+      },
+      (err) => {
+        console.log(err);
+        setProjects({});
+      }
+    );
   };
 
   useEffect(() => {
@@ -34,12 +38,9 @@ const Proyects = (props) => {
     <div className="proyectsColumn">
       <SerachBar></SerachBar>
       <div className="proyectsRow">
-        <ProyectCard></ProyectCard>
-        <ProyectCard></ProyectCard>
-        <ProyectCard></ProyectCard>
-        <ProyectCard></ProyectCard>
-        <ProyectCard></ProyectCard>
-        <ProyectCard></ProyectCard>
+        {projects.map((project) => {
+          <TicketCard key={project._id} {...project}></TicketCard>;
+        })}
       </div>
     </div>
   );
