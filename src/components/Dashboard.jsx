@@ -14,6 +14,11 @@ const Dashboard = (props) => {
       <DashboardCard></DashboardCard>
       <DashboardCard></DashboardCard>
       <DashboardCard></DashboardCard>
+      <DashboardCard></DashboardCard>
+      <DashboardCard></DashboardCard>
+      <DashboardCard></DashboardCard>
+      <DashboardCard></DashboardCard>
+      <DashboardCard></DashboardCard>
     </div>
   );
 };

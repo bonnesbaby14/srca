@@ -22,8 +22,8 @@ const Clients = (props) => {
     if (data.status === 401) {
       setUser({ type: "logout" });
     } else {
-      const clients = await data.json();
-      setClients(clients);
+      const client = await data.json();
+      setClients(client);
     }
   };
 
@@ -36,7 +36,7 @@ const Clients = (props) => {
       <SerachBar></SerachBar>
       <div className="clientsRow">
         {clients.map((clients) => (
-          <CardClient key={clients.id} {...clients} />
+          <CardClient key={clients._id} {...clients} />
         ))}
         <FloatButton></FloatButton>
       </div>
