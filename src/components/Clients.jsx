@@ -40,9 +40,7 @@ const Clients = (props) => {
       <SerachBar></SerachBar>
       <div className="clientsRow">
         {clients.length > 0 ? (
-          clients.map((clients) => (
-            <CardClient key={clients._id} {...clients} />
-          ))
+          clients.map((client) => <CardClient key={client._id} {...client} />)
         ) : (
           <h1 style={{ color: "white" }}> Sin elementos que mostrar</h1>
         )}

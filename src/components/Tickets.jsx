@@ -40,9 +40,7 @@ const Tickets = (props) => {
 
       <div className="ticketsRow">
         {tickets.length > 0 ? (
-          tickets.map((ticket) => {
-            <TicketCard key={ticket._id} {...ticket}></TicketCard>;
-          })
+          tickets.map((ticket) => <TicketCard key={ticket._id} {...ticket} />)
         ) : (
           <h1 style={{ color: "white" }}> Sin elementos que mostrar</h1>
         )}
