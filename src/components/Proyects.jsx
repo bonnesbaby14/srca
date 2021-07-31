@@ -2,14 +2,16 @@ import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../context/contexts";
 import "./Proyects.css";
 import ProyectCard from "./ProyectCard";
+import Loading from "./Loading";
 
 import SerachBar from "./SearchBar";
-import TicketCard from "./TicketCard";
 
 const Proyects = (props) => {
   const { log, setUser } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
   const [projects, setProjects] = useState([]);
   const getData = () => {
+    setIsLoading(true);
     fetch("http://localhost:5000/projects", {
       method: "GET",
       headers: {
@@ -19,12 +21,18 @@ const Proyects = (props) => {
       },
     }).then(
       (data) => {
-        data.json().then((data) => {
-          setProjects(data);
-        });
+        if (data.status === 401) {
+          setUser({ type: "logout" });
+        } else {
+          data.json().then((data) => {
+            setIsLoading(false);
+            setProjects(data);
+          });
+        }
       },
       (err) => {
         console.log(err);
+        setIsLoading(false);
         setProjects({});
       }
     );
@@ -38,12 +46,12 @@ const Proyects = (props) => {
     <div className="proyectsColumn">
       <SerachBar></SerachBar>
       <div className="proyectsRow">
-        {projects.length > 0 ? (
+        {isLoading ? (
+          <Loading></Loading>
+        ) : (
           projects.map((project) => (
             <ProyectCard key={project._id} {...project} />
           ))
-        ) : (
-          <h1 style={{ color: "white" }}> Sin elementos que mostrar</h1>
         )}
       </div>
     </div>
