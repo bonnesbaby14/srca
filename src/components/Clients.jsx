@@ -39,9 +39,13 @@ const Clients = (props) => {
     <div className="clientsColumn">
       <SerachBar></SerachBar>
       <div className="clientsRow">
-        {clients.map((clients) => (
-          <CardClient key={clients._id} {...clients} />
-        ))}
+        {clients.length > 0 ? (
+          clients.map((clients) => (
+            <CardClient key={clients._id} {...clients} />
+          ))
+        ) : (
+          <h1 style={{ color: "white" }}> Sin elementos que mostrar</h1>
+        )}
         <FloatButton></FloatButton>
       </div>
     </div>

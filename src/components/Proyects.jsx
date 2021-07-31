@@ -38,9 +38,13 @@ const Proyects = (props) => {
     <div className="proyectsColumn">
       <SerachBar></SerachBar>
       <div className="proyectsRow">
-        {projects.map((project) => {
-          <TicketCard key={project._id} {...project}></TicketCard>;
-        })}
+        {projects.length > 0 ? (
+          projects.map((project) => {
+            <TicketCard key={project._id} {...project}></TicketCard>;
+          })
+        ) : (
+          <h1 style={{ color: "white" }}> Sin elementos que mostrar</h1>
+        )}
       </div>
     </div>
   );

@@ -44,7 +44,7 @@ const Tickets = (props) => {
             <TicketCard key={ticket._id} {...ticket}></TicketCard>;
           })
         ) : (
-          <h1 style={{ color: "white" }}> Sin elementos</h1>
+          <h1 style={{ color: "white" }}> Sin elementos que mostrar</h1>
         )}
 
         <FloatButton></FloatButton>
