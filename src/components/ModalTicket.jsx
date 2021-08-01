@@ -8,12 +8,30 @@ const ModalClient = ({ closeModal }) => {
   const { log, setUser } = useContext(UserContext);
   const [clients, setClients] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [data, setdata] = useState({
+    import: "",
+    date1: new Date(),
+    signature: "",
+    payment: "",
+    id_project: "",
+    id_client: "",
+  });
 
   const handleModal = (event) => {
-    event.preventDefault();
+    const datafinal = { ...data };
+    datafinal[event.target.id] = event.target.value;
+
+    setdata(datafinal);
   };
   const handleCloseModal = () => {
     closeModal(false);
+  };
+
+  const handleUpProject = (e) => {
+    e.preventDefault();
+    const datafinal = { ...data };
+    data.date1 = new Date();
+    console.log(data);
   };
   const getData = () => {
     fetch("http://192.168.100.2:5000/clients", {
@@ -71,7 +89,11 @@ const ModalClient = ({ closeModal }) => {
       <form className="modalForm" onSubmit={handleModal}>
         <h2>Agregar Ticket</h2>
 
-        <select name="metodo">
+        <select name="metodo" onChange={handleModal} id="payment">
+          <option className="option" value="">
+            Metodo de pago
+          </option>
+
           <option className="option" value="Efectivo">
             Efectivo
           </option>
@@ -79,24 +101,41 @@ const ModalClient = ({ closeModal }) => {
             Transferencia
           </option>
         </select>
-        <select name="cliente">
-          {clients.map((client) => (
-            <option className="option" value={client._id}>
-              {client.name}
+
+        <input
+          onChange={handleModal}
+          id="import"
+          type="text"
+          placeholder="importe"
+          value={data.import}
+        />
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <select name="cliente" onChange={handleModal} id="id_client">
+            <option className="option" value="">
+              Cliente
             </option>
-          ))}
-        </select>
-        <select name="proyecto">
-          {projects.map((project) => (
-            <option className="option" value={project._id}>
-              {project.name}
+            {clients.map((client) => (
+              <option className="option" key={client._id} value={client._id}>
+                {client.name}
+              </option>
+            ))}
+          </select>
+          <select name="proyecto" onChange={handleModal} id="id_project">
+            <option className="option" value="">
+              Proyecto
             </option>
-          ))}
-        </select>
+
+            {projects.map((project) => (
+              <option className="option" key={project._id} value={project._id}>
+                {project.name}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="lienzo">
           <Lienzo></Lienzo>
         </div>
-        <button onClick={() => {}}>Guardar</button>
+        <button onClick={handleUpProject}>Guardar</button>
         <button onClick={handleCloseModal}>Cancelar</button>
       </form>
     </div>
