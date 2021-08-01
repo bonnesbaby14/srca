@@ -1,0 +1,67 @@
+.modal {
+  position: absolute;
+  z-index: 100;
+  width: 400px;
+  height: 500px;
+  color: white;
+  border-radius: 15px;
+  background-color: rgba(8, 7, 7, 0.315);
+  backdrop-filter: blur(50px);
+  transition: width 2s, height 4s;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+}
+.modalForm select {
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  width: 90%;
+  color: white;
+  border: 1px white solid;
+  border-radius: 5px;
+  height: 50px;
+
+  margin: auto;
+  margin-top: 20px;
+}
+.modalForm select * {
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  width: 90%;
+  color: white;
+  border: 1px white solid;
+  border-radius: 5px;
+  height: 50px;
+
+  margin: auto;
+  margin-top: 20px;
+}
+.modalForm select:focus {
+  outline: none;
+}
+.modalForm select::placeholder {
+  color: white;
+}
+
+.modalForm button {
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  width: 90%;
+  color: white;
+  border: 1px white solid;
+  border-radius: 10px;
+  height: 45px;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 20px;
+}
+.modalForm button:hover {
+  background: white;
+  color: grey;
+}

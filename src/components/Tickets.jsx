@@ -6,11 +6,16 @@ import SerachBar from "./SearchBar";
 import "./Tickets.css";
 import TicketCard from "./TicketCard";
 import Loading from "./Loading";
+import ModalTicket from "./ModalTicket";
 
 const Tickets = (props) => {
   const { log, setUser } = useContext(UserContext);
   const [tickets, setTickets] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isModal, setIsModal] = useState(false);
+  const handleModal = () => {
+    setIsModal(true);
+  };
   const getData = () => {
     setIsLoading(true);
     fetch("http://localhost:5000/tickets", {
@@ -48,13 +53,16 @@ const Tickets = (props) => {
       <SerachBar></SerachBar>
 
       <div className="ticketsRow">
+        {isModal ? <ModalTicket closeModal={setIsModal} /> : null}
         {isLoading ? (
           <Loading></Loading>
         ) : (
           tickets.map((ticket) => <TicketCard key={ticket._id} {...ticket} />)
         )}
 
-        <FloatButton></FloatButton>
+        <div onClick={handleModal}>
+          <FloatButton></FloatButton>
+        </div>
       </div>
     </div>
   );
