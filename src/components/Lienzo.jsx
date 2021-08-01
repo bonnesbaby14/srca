@@ -9,13 +9,13 @@ const Lienzo = (props) => {
     <div>
       <SignatureCanvas
         canvasProps={{
-          width: 500,
-          height: 200,
+          width: 300,
+          height: 100,
           style: { border: "1px solid #000000", background: "white" },
         }}
         ref={signatureRef}
       />
-      <button
+      {/* <button
         onClick={() => {
           const link = document.createElement("a");
           link.download = "ticked.jpeg";
@@ -27,13 +27,13 @@ const Lienzo = (props) => {
         }}
       >
         listo
-      </button>
+      </button> */}
       <button
         onClick={() => {
           signatureRef.current.clear();
         }}
       >
-        borrrar
+        Borrar
       </button>
     </div>
   );

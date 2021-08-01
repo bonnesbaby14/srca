@@ -18,7 +18,7 @@ const Tickets = (props) => {
   };
   const getData = () => {
     setIsLoading(true);
-    fetch("http://localhost:5000/tickets", {
+    fetch("http://192.168.100.2:5000/tickets", {
       method: "GET",
       headers: {
         Accept: "application/json",

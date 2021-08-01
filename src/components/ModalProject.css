@@ -2,18 +2,40 @@
   position: absolute;
   z-index: 100;
   width: 400px;
-  height: 630px;
+  height: 620px;
   color: white;
   border-radius: 15px;
   background-color: rgba(8, 7, 7, 0.315);
   backdrop-filter: blur(50px);
-  top: 20px;
+  transition: width 2s, height 4s;
 }
 
 .modalForm {
   display: flex;
   flex-direction: column;
   margin-top: 60px;
+}
+.modalForm input,
+textarea {
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  width: 90%;
+  color: white;
+  border: 1px white solid;
+  border-radius: 5px;
+  height: 50px;
+
+  margin: auto;
+  margin-top: 20px;
+}
+.modalForm input,
+textarea:focus {
+  outline: none;
+}
+.modalForm input,
+textarea::placeholder {
+  color: white;
 }
 .modalForm select {
   margin-left: 10px;
@@ -54,8 +76,4 @@
 .modalForm button:hover {
   background: white;
   color: grey;
-}
-
-.lienzo {
-  margin-top: 20px;
 }

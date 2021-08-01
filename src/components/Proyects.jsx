@@ -5,14 +5,20 @@ import ProyectCard from "./ProyectCard";
 import Loading from "./Loading";
 
 import SerachBar from "./SearchBar";
+import FloatButton from "./FloatButton";
+import ModalProject from "./ModalProject";
 
 const Proyects = (props) => {
   const { log, setUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   const [projects, setProjects] = useState([]);
+  const [isModal, setIsModal] = useState(false);
+  const handleModal = () => {
+    setIsModal(true);
+  };
   const getData = () => {
     setIsLoading(true);
-    fetch("http://localhost:5000/projects", {
+    fetch("http://192.168.100.2:5000/projects", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -45,6 +51,7 @@ const Proyects = (props) => {
   return (
     <div className="proyectsColumn">
       <SerachBar></SerachBar>
+      {isModal ? <ModalProject closeModal={setIsModal} /> : null}
       <div className="proyectsRow">
         {isLoading ? (
           <Loading></Loading>
@@ -53,6 +60,9 @@ const Proyects = (props) => {
             <ProyectCard key={project._id} {...project} />
           ))
         )}
+      </div>
+      <div onClick={handleModal}>
+        <FloatButton></FloatButton>
       </div>
     </div>
   );

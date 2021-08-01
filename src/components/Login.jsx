@@ -7,7 +7,7 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/login", {
+    fetch("http://192.168.100.2:5000/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title: "React POST Request Example" }),
@@ -15,6 +15,9 @@ const Login = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setUser({ type: "login", authKey: data.token });
+      })
+      .catch((err) => {
+        alert(err);
       });
   };
 
