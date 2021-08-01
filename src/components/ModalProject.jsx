@@ -13,7 +13,7 @@ const ModalProject = ({ closeModal }) => {
     price: "",
     date1: startDateInicio,
     date2: startDateFin,
-    id: "",
+    id_cliente: "",
   });
 
   const { log, setUser } = useContext(UserContext);
@@ -35,6 +35,7 @@ const ModalProject = ({ closeModal }) => {
 
     datafinal.date1 = startDateInicio;
     datafinal.date2 = startDateFin;
+    console.log(data);
   };
   const getData = () => {
     fetch("http://192.168.100.2:5000/clients", {
@@ -111,10 +112,12 @@ const ModalProject = ({ closeModal }) => {
             />
           </label>
         </div>
-        <select name="cliente">
-          {console.log(clients)}
+        <select name="cliente" onChange={handleModal} id="id_cliente">
+          <option className="option" value="">
+            Cliente
+          </option>
           {clients.map((client) => (
-            <option className="option" value={client._id}>
+            <option className="option" key={client._id} value={client._id}>
               {client.name}
             </option>
           ))}
