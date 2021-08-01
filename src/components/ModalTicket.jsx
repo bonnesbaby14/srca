@@ -71,19 +71,29 @@ const ModalClient = ({ closeModal }) => {
         <h2>Agregar Ticket</h2>
 
         <select name="metodo">
-          <option value="Efectivo">Efectivo</option>
-          <option value="Transferencia">Transferencia</option>
+          <option className="option" value="Efectivo">
+            Efectivo
+          </option>
+          <option className="option" value="Transferencia">
+            Transferencia
+          </option>
         </select>
         <select name="cliente">
           {clients.map((client) => (
-            <option value={client._id}>{client.name}</option>
+            <option className="option" value={client._id}>
+              {client.name}
+            </option>
           ))}
 
-          <option value="Transferencia">Transferencia</option>
+          <option className="option" value="Transferencia">
+            Transferencia
+          </option>
         </select>
         <select name="proyecto">
           {projects.map((project) => (
-            <option value={project._id}>{project.name}</option>
+            <option className="option" value={project._id}>
+              {project.name}
+            </option>
           ))}
         </select>
 
