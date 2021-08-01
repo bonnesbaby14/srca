@@ -21,15 +21,22 @@ const ModalProject = ({ closeModal }) => {
 
   const handleModal = (event) => {
     const datafinal = { ...data };
-    datafinal[event.target.name] = event.target.value;
+    datafinal[event.target.id] = event.target.value;
+
     setdata(datafinal);
-    console.log(datafinal);
   };
   const handleCloseModal = () => {
     closeModal(false);
   };
-  var name, price, description;
-  const handleUpProject = () => {};
+
+  const handleUpProject = (e) => {
+    e.preventDefault();
+    const datafinal = { ...data };
+
+    datafinal.date1 = startDateInicio;
+    datafinal.date2 = startDateFin;
+    console.log(datafinal);
+  };
   const getData = () => {
     fetch("http://192.168.100.2:5000/clients", {
       method: "GET",
@@ -87,15 +94,20 @@ const ModalProject = ({ closeModal }) => {
           <label htmlFor="">
             Inicio{" "}
             <DatePicker
-              selected={data.startDateInicio}
-              onChange={(date) => setStartDateInicio(date)}
+              selected={startDateInicio}
+              onChange={(date) => {
+                setStartDateInicio(date);
+              }}
             />
           </label>
           <label htmlFor="">
             Final{" "}
             <DatePicker
               selected={startDateFin}
-              onChange={(date) => setStartDateFin(date)}
+              onChange={(date) => {
+                setStartDateFin(date);
+                setdata(data);
+              }}
             />
           </label>
         </div>
