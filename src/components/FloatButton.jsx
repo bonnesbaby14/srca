@@ -4,7 +4,7 @@ import { FaUserPlus } from "react-icons/fa";
 
 import "./FloatButton.css";
 
-const FloatButton = (props) => {
+const FloatButton = ({ openModal }) => {
   return (
     <div>
       <button className="float-button" target="_blank">

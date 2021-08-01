@@ -7,11 +7,16 @@ import "./Clients.css";
 import FloatButton from "./FloatButton";
 
 import SerachBar from "./SearchBar";
+import ModalClient from "./ModalClient";
 
 const Clients = (props) => {
   const { log, setUser } = useContext(UserContext);
   const [clients, setClients] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isModal, setIsModal] = useState(false);
+  const handleModal = () => {
+    setIsModal(true);
+  };
   const getData = () => {
     setIsLoading(true);
     fetch("http://localhost:5000/clients", {
@@ -48,12 +53,15 @@ const Clients = (props) => {
     <div className="clientsColumn">
       <SerachBar></SerachBar>
       <div className="clientsRow">
+        {isModal ? <ModalClient closeModal={setIsModal} /> : null}
         {isLoading ? (
           <Loading></Loading>
         ) : (
           clients.map((client) => <CardClient key={client._id} {...client} />)
         )}
-        <FloatButton></FloatButton>
+        <div onClick={handleModal}>
+          <FloatButton></FloatButton>
+        </div>
       </div>
     </div>
   );
