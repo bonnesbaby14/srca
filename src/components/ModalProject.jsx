@@ -35,7 +35,6 @@ const ModalProject = ({ closeModal }) => {
 
     datafinal.date1 = startDateInicio;
     datafinal.date2 = startDateFin;
-    console.log(datafinal);
   };
   const getData = () => {
     fetch("http://192.168.100.2:5000/clients", {
@@ -81,6 +80,7 @@ const ModalProject = ({ closeModal }) => {
           id="description"
           type="text"
           placeholder="Descripción"
+          style={{ resize: "none" }}
           value={data.description}
         />
         <input
@@ -112,6 +112,7 @@ const ModalProject = ({ closeModal }) => {
           </label>
         </div>
         <select name="cliente">
+          {console.log(clients)}
           {clients.map((client) => (
             <option className="option" value={client._id}>
               {client.name}
