@@ -7,14 +7,29 @@ import "react-datepicker/dist/react-datepicker.css";
 const ModalProject = ({ closeModal }) => {
   const [startDateInicio, setStartDateInicio] = useState(new Date());
   const [startDateFin, setStartDateFin] = useState(null);
+  const [data, setdata] = useState({
+    name: "",
+    description: "",
+    price: "",
+    date1: startDateInicio,
+    date2: startDateFin,
+    id: "",
+  });
+
   const { log, setUser } = useContext(UserContext);
   const [clients, setClients] = useState([]);
+
   const handleModal = (event) => {
-    event.preventDefault();
+    const datafinal = { ...data };
+    datafinal[event.target.name] = event.target.value;
+    setdata(datafinal);
+    console.log(datafinal);
   };
   const handleCloseModal = () => {
     closeModal(false);
   };
+  var name, price, description;
+  const handleUpProject = () => {};
   const getData = () => {
     fetch("http://192.168.100.2:5000/clients", {
       method: "GET",
@@ -47,14 +62,32 @@ const ModalProject = ({ closeModal }) => {
     <div className="modal">
       <form className="modalForm" onSubmit={handleModal}>
         <h2>Agregar proyecto</h2>
-        <input type="text" placeholder="Nombre" />
-        <textarea type="text" placeholder="Descripción" />
-        <input type="text" placeholder="Precio" />
+        <input
+          onChange={handleModal}
+          type="text"
+          id="name"
+          placeholder="Nombre"
+          value={data.name}
+        />
+        <textarea
+          onChange={handleModal}
+          id="description"
+          type="text"
+          placeholder="Descripción"
+          value={data.description}
+        />
+        <input
+          onChange={handleModal}
+          type="text"
+          id="price"
+          placeholder="Precio"
+          value={data.price}
+        />
         <div style={{ display: "flex", flexDirection: "row" }}>
           <label htmlFor="">
             Inicio{" "}
             <DatePicker
-              selected={startDateInicio}
+              selected={data.startDateInicio}
               onChange={(date) => setStartDateInicio(date)}
             />
           </label>
@@ -73,7 +106,7 @@ const ModalProject = ({ closeModal }) => {
             </option>
           ))}
         </select>
-        <button onClick={() => {}}>Guardar</button>
+        <button onClick={handleUpProject}>Guardar</button>
         <button onClick={handleCloseModal}>Cancelar</button>
       </form>
     </div>
