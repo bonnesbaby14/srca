@@ -16,6 +16,7 @@ const Tickets = (props) => {
   const handleModal = () => {
     setIsModal(true);
   };
+
   const getData = () => {
     setIsLoading(true);
     fetch("http://192.168.100.2:5000/tickets", {
@@ -27,6 +28,7 @@ const Tickets = (props) => {
       },
     }).then(
       (data) => {
+        // console.table(data);
         if (data.status === 401) {
           setUser({ type: "logout" });
         } else {
@@ -53,7 +55,9 @@ const Tickets = (props) => {
       <SerachBar></SerachBar>
 
       <div className="ticketsRow">
-        {isModal ? <ModalTicket closeModal={setIsModal} /> : null}
+        {isModal ? (
+          <ModalTicket closeModal={setIsModal} update={getData} />
+        ) : null}
         {isLoading ? (
           <Loading></Loading>
         ) : (
