@@ -29,26 +29,45 @@ const handleClick = () => {
   alert("s");
 };
 
-const TicketCard = (props) => {
+const TicketCard = ({ _id, date, payment, _import }) => {
   return (
     <>
       <ContextMenuTrigger id="add_same_id">
         <div className="receipt" id="hola" onAuxClick={handleAuxClick}>
-          <img
-            className="logo"
-            src="./assets/logo-negro.png"
-            alt="Gabriel Angeles"
-          />
-          <hr />
-          <div className="address">666 Lincoln St. Santa Monica, CA</div>
-
-          <div className="transactionDetails">Helped by: Garrett</div>
-          <div className="centerItem bold">
-            <div className="item">ExtraCare Card #: *********1875</div>
-            <div>
-              <QRCode value="http://gabrielangeles.com" size={150} />
+          <div className="logo">
+            <img src="./assets/logo-negro.png" alt="Gabriel Angeles" />
+          </div>
+          <div className="data">
+            <div className="folio">
+              <h4>Folio:</h4>
+              <h5>{_id}</h5>
             </div>
-            <button onClick={handlePDF}>sssss</button>
+
+            <div className="fecha">
+              <h4>Fecha:</h4>
+              <h5>{new Date(date).toDateString()}</h5>
+            </div>
+            <div className="pago">
+              <h4>Metodo de pago:</h4>
+              <h5>{payment}</h5>
+            </div>
+            <div className="importe">
+              <h4>Importe</h4>
+              <h5>${_import}</h5>
+            </div>
+            <div className="proyecto">
+              <h4>Proyecto</h4>
+              <h5>${_import}</h5>
+            </div>
+            <div className="cliente">
+              <h4>Cliente</h4>
+              <h5>${_import}</h5>
+            </div>
+
+            <div className="qr">
+              <QRCode value="https://gabrielangeles.com" size={60} />
+            </div>
+            {/* <button onClick={handlePDF}>sssss</button> */}
           </div>
         </div>
       </ContextMenuTrigger>
