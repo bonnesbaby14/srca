@@ -53,7 +53,9 @@ const Clients = (props) => {
     <div className="clientsColumn">
       <SerachBar></SerachBar>
       <div className="clientsRow">
-        {isModal ? <ModalClient closeModal={setIsModal} /> : null}
+        {isModal ? (
+          <ModalClient closeModal={setIsModal} update={getData} />
+        ) : null}
         {isLoading ? (
           <Loading></Loading>
         ) : (
