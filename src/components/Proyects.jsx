@@ -13,6 +13,7 @@ const Proyects = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [projects, setProjects] = useState([]);
   const [isModal, setIsModal] = useState(false);
+
   const handleModal = () => {
     setIsModal(true);
   };
@@ -51,7 +52,9 @@ const Proyects = (props) => {
   return (
     <div className="proyectsColumn">
       <SerachBar></SerachBar>
-      {isModal ? <ModalProject closeModal={setIsModal} /> : null}
+      {isModal ? (
+        <ModalProject closeModal={setIsModal} update={getData} />
+      ) : null}
       <div className="proyectsRow">
         {isLoading ? (
           <Loading></Loading>

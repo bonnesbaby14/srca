@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
-import PropTypes from "prop-types";
-import "./ModalProject.css";
 import { UserContext } from "../context/contexts";
+import "./ModalProject.css";
+
+import Loading from "./Loading";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-const ModalProject = ({ closeModal }) => {
+const ModalProject = ({ closeModal, update }) => {
   const [startDateInicio, setStartDateInicio] = useState(new Date());
   const [startDateFin, setStartDateFin] = useState(null);
   const [data, setdata] = useState({
@@ -18,7 +19,72 @@ const ModalProject = ({ closeModal }) => {
 
   const { log, setUser } = useContext(UserContext);
   const [clients, setClients] = useState([]);
+  const [error, setError] = useState({ estado: false, color: "", texto: "" });
+  const [isLoading, setIsLoading] = useState(false);
+  const handleerror = async () => {
+    setTimeout(() => {
+      setError(false);
+    }, 2000);
+  };
+  const upData = (data) => {
+    console.log("se empieza a enviar");
+    console.log(JSON.stringify(data));
+    setIsLoading(true);
+    fetch("http://192.168.100.2:5000/upProject", {
+      method: "POST",
+      headers: {
+        // Accept: "application/json",
+        Authorization: log.authKey,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then(
+      (data) => {
+        if (data.status === 401) {
+          setUser({ type: "logout" });
+        } else {
+          data.json().then((data) => {
+            if (data.error === "errorData") {
+              setIsLoading(false);
+              setError({
+                estado: true,
+                color: "red",
+                texto: "Ocurrio un error",
+              });
+              handleerror();
+            } else if (data.error === "errorSave") {
+              setIsLoading(false);
+              setError({
+                estado: true,
+                color: "red",
+                texto: "Intenta de nuevo",
+              });
+              handleerror();
+            } else if (data.error === "noError") {
+              setIsLoading(false);
+              setError({
+                estado: true,
+                color: "green",
+                texto: "Guardado con exito",
+              });
+              handleSuccesfull();
+            }
+          });
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  };
+  const handleSuccesfull = async () => {
+    setTimeout(() => {
+      setError(false);
 
+      closeModal(false);
+      update();
+    }, 1000);
+  };
   const handleModal = (event) => {
     const datafinal = { ...data };
     datafinal[event.target.id] = event.target.value;
@@ -35,6 +101,22 @@ const ModalProject = ({ closeModal }) => {
 
     datafinal.date1 = startDateInicio;
     datafinal.date2 = startDateFin;
+    if (
+      datafinal.name === "" ||
+      datafinal.description === "" ||
+      datafinal.price === "" ||
+      datafinal.date1 === "" ||
+      datafinal.id_cliente === ""
+    ) {
+      setError({
+        estado: true,
+        color: "yellow",
+        texto: "Llena todos los datos",
+      });
+      handleerror();
+      return;
+    }
+    upData(data);
     console.log(data);
   };
   const getData = () => {
@@ -67,6 +149,19 @@ const ModalProject = ({ closeModal }) => {
   }, []);
   return (
     <div className="modal">
+      {error.estado ? (
+        <div
+          style={{
+            background: error.color,
+            width: "100%",
+            borderTopLeftRadius: "10px",
+            borderTopRightRadius: "10px",
+          }}
+        >
+          <span>{error.texto}</span>
+        </div>
+      ) : null}
+      {isLoading ? <Loading></Loading> : null}
       <form className="modalForm" onSubmit={handleModal}>
         <h2>Agregar proyecto</h2>
         <input
