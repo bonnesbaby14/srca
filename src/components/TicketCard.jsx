@@ -29,7 +29,10 @@ const handleClick = () => {
   alert("s");
 };
 
-const TicketCard = ({ _id, date, payment, _import }) => {
+const TicketCard = ({ _id, date, payment, _import, client, project }) => {
+  console.log("datos dento del ");
+  console.log(client);
+  console.log(project);
   return (
     <>
       <ContextMenuTrigger id="add_same_id">
@@ -57,11 +60,11 @@ const TicketCard = ({ _id, date, payment, _import }) => {
             </div>
             <div className="proyecto">
               <h4>Proyecto</h4>
-              <h5>${_import}</h5>
+              <h5>{project.name}</h5>
             </div>
             <div className="cliente">
               <h4>Cliente</h4>
-              <h5>${_import}</h5>
+              <h5>{client.name}</h5>
             </div>
 
             <div className="qr">

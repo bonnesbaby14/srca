@@ -10,7 +10,13 @@ import ModalTicket from "./ModalTicket";
 
 const Tickets = (props) => {
   const { log, setUser } = useContext(UserContext);
-  const [tickets, setTickets] = useState([]);
+
+  const [datos, setDatos] = useState({
+    tickets: [],
+    clients: [],
+    projects: [],
+  });
+
   const [isLoading, setIsLoading] = useState(false);
   const [isModal, setIsModal] = useState(false);
   const handleModal = () => {
@@ -33,23 +39,29 @@ const Tickets = (props) => {
           setUser({ type: "logout" });
         } else {
           data.json().then((data) => {
+            setDatos({
+              tickets: data.tickets,
+              clients: data.clients,
+              projects: data.projects,
+            });
             setIsLoading(false);
-            setTickets(data);
+            // console.log("se guardaron dato");
           });
         }
       },
       (err) => {
         console.log(err);
         setIsLoading(false);
-        setTickets({});
       }
     );
   };
 
   useEffect(() => {
+    // console.log("se ejecuto el useefect");
     getData();
   }, []);
-
+  // console.log("estos son los datos");
+  // console.log(datos);
   return (
     <div className="ticketsColumn">
       <SerachBar></SerachBar>
@@ -60,9 +72,29 @@ const Tickets = (props) => {
         ) : null}
         {isLoading ? (
           <Loading></Loading>
-        ) : (
-          tickets.map((ticket) => <TicketCard key={ticket._id} {...ticket} />)
-        )}
+        ) : datos.tickets.length > 0 &&
+          datos.clients.length > 0 &&
+          datos.projects.length > 0 ? (
+          datos.tickets.map((ticket) => {
+            console.log("los datos dentro del estado");
+            console.log(datos.tickets);
+            console.log(datos.clients);
+            console.log(datos.projects);
+
+            return (
+              <TicketCard
+                key={ticket._id}
+                {...ticket}
+                client={datos.clients.find(
+                  async (client) => (await client._id) === ticket.id_client
+                )}
+                project={datos.projects.find(
+                  async (project) => (await project._id) === ticket.id_project
+                )}
+              />
+            );
+          })
+        ) : null}
 
         <div onClick={handleModal}>
           <FloatButton></FloatButton>
