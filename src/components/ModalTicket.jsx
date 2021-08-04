@@ -5,7 +5,7 @@ import Lienzo from "./Lienzo";
 import Loading from "./Loading";
 import "./ModalTicket.css";
 
-const ModalClient = ({ closeModal, update }) => {
+const ModalClient = ({ closeModal, update, estado }) => {
   const handleerror = async () => {
     setTimeout(() => {
       setError(false);
@@ -24,13 +24,15 @@ const ModalClient = ({ closeModal, update }) => {
   const [projects, setProjects] = useState([]);
   const [error, setError] = useState({ estado: false, color: "", texto: "" });
   const [isLoading, setIsLoading] = useState(false);
+  console.log("datos denteo del modal para edit");
+  console.table(estado.data);
   const [data, setdata] = useState({
-    import: "",
-    date1: new Date(),
-    signature: "firmalink",
-    payment: "",
-    id_project: "",
-    id_client: "",
+    import: estado.data.import,
+    date1: estado.data.date1,
+    signature: estado.data.signature,
+    payment: estado.data.payment,
+    id_project: estado.data.id_project,
+    id_client: estado.data.id_client,
   });
   const upData = (data) => {
     console.log("se empieza a enviar");
@@ -90,7 +92,7 @@ const ModalClient = ({ closeModal, update }) => {
     setdata(datafinal);
   };
   const handleCloseModal = () => {
-    closeModal(false);
+    closeModal({ estado: false, action: "" });
   };
 
   const handleUpProject = (e) => {
@@ -166,6 +168,7 @@ const ModalClient = ({ closeModal, update }) => {
   useEffect(() => {
     getData();
   }, []);
+
   return (
     <div className="modal">
       {error.estado ? (

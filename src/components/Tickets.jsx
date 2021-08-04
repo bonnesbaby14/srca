@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../context/contexts";
-
 import { AiOutlineClose, AiFillEdit, AiOutlineSend } from "react-icons/ai";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
-
 import FloatButton from "./FloatButton";
 import SerachBar from "./SearchBar";
 import "./Tickets.css";
@@ -12,23 +10,49 @@ import Loading from "./Loading";
 import ModalTicket from "./ModalTicket";
 
 const Tickets = (props) => {
-  const handleEdit = (e, data) => {};
-  const handleRemove = (e, data) => {};
-  const handleSend = (e, data) => {};
+  //context del usuario
   const { log, setUser } = useContext(UserContext);
 
+  //handles para edicion del elemento
+
+  const handleRemove = (e, data) => {};
+  const handleSend = (e, data) => {};
+  //handle para abrir modal para editar usuario
+  const handleEdit = (e, data) => {
+    console.log("se ejecuto ");
+    console.table(data.data);
+    setIsModal({ estado: true, action: "edit", data: data.data });
+  };
+
+  //datos de la peticion
   const [datos, setDatos] = useState({
     tickets: [],
     clients: [],
     projects: [],
   });
 
+  // Estado de carga
   const [isLoading, setIsLoading] = useState(false);
-  const [isModal, setIsModal] = useState(false);
+  //estado del modal
+  const [isModal, setIsModal] = useState({ estado: false, action: "" });
+
+  //handle para abrir modal para nuevo usuario
   const handleModal = () => {
-    setIsModal(true);
+    setIsModal({
+      estado: true,
+      action: "new",
+      data: {
+        import: "",
+        date1: new Date(),
+        signature: "firmalink",
+        payment: "",
+        id_project: "",
+        id_client: "",
+      },
+    });
   };
 
+  //consulta api rest
   const getData = () => {
     setIsLoading(true);
     fetch("http://192.168.100.2:5000/tickets", {
@@ -62,25 +86,26 @@ const Tickets = (props) => {
     );
   };
 
+  //usefect para la consulta
   useEffect(() => {
-    // console.log("se ejecuto el useefect");
     getData();
   }, []);
-  // console.log("estos son los datos");
-  // console.log(datos);
+
   return (
     <div className="ticketsColumn">
       <SerachBar></SerachBar>
 
       <div className="ticketsRow">
-        {isModal ? (
-          <ModalTicket closeModal={setIsModal} update={getData} />
+        {isModal.estado ? (
+          <ModalTicket
+            closeModal={setIsModal}
+            update={getData}
+            estado={isModal}
+          />
         ) : null}
         {isLoading ? (
           <Loading></Loading>
-        ) : datos.tickets.length > 0 &&
-          datos.clients.length > 0 &&
-          datos.projects.length > 0 ? (
+        ) : (
           datos.tickets.map((ticket) => {
             return (
               <ContextMenuTrigger id={ticket._id}>
@@ -117,7 +142,7 @@ const Tickets = (props) => {
                   </MenuItem>
                   <MenuItem
                     onClick={handleEdit}
-                    data={{ id: ticket._id }}
+                    data={{ data: ticket }}
                     className="menuItem"
                   >
                     <div
@@ -159,7 +184,7 @@ const Tickets = (props) => {
               </ContextMenuTrigger>
             );
           })
-        ) : null}
+        )}
 
         <div onClick={handleModal}>
           <FloatButton></FloatButton>
