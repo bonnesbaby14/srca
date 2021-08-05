@@ -275,7 +275,6 @@ const ModalClient = ({ closeModal, update, estado }) => {
             Metodo de pago
           </option>
           <option
-            selected
             className="option"
             selected={
               estado.action === "edit" && estado.data.payment === "Efectivo"
@@ -287,7 +286,6 @@ const ModalClient = ({ closeModal, update, estado }) => {
             Efectivo
           </option>
           <option
-            selected
             className="option"
             selected={
               estado.action === "edit" &&

@@ -1,4 +1,4 @@
-.modal {
+.modalDelete {
   position: absolute;
   z-index: 100;
   width: 400px;
@@ -7,15 +7,15 @@
   border-radius: 15px;
   background-color: rgba(8, 7, 7, 0.315);
   backdrop-filter: blur(50px);
-  top: 10px;
+  top: 100px;
 }
 
-.modalForm {
+.modalFormDelete {
   display: flex;
   flex-direction: column;
   margin-top: 60px;
 }
-.modalForm select {
+.modalFormDelete select {
   margin-left: 10px;
   background: transparent;
   border: none;
@@ -28,7 +28,7 @@
   margin: auto;
   margin-top: 20px;
 }
-.modalForm input {
+.modalFormDelete input {
   margin-left: 10px;
   background: transparent;
   border: none;
@@ -44,19 +44,19 @@
 .option {
   color: black;
 }
-.modalForm select:focus {
+.modalFormDelete select:focus {
   outline: none;
 }
-.modalForm select::placeholder {
+.modalFormDelete select::placeholder {
   color: white;
 }
-.modalForm input:focus {
+.modalFormDelete input:focus {
   outline: none;
 }
-.modalForm input::placeholder {
+.modalFormDelete input::placeholder {
   color: white;
 }
-.modalForm button {
+.modalFormDelete button {
   margin-left: 10px;
   background: transparent;
   border: none;
@@ -69,7 +69,7 @@
   margin: auto;
   margin-top: 20px;
 }
-.modalForm button:hover {
+.modalFormDelete button:hover {
   background: white;
   color: grey;
 }

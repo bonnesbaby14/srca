@@ -17,14 +17,15 @@ const ModalDeleteTicket = ({ closeModal, update, estado }) => {
     setTimeout(() => {
       setError(false);
 
-      closeModal(false);
+      closeModal({ estado: false, data: "" });
+      console.log("llegue aqui");
       update();
     }, 1000);
   };
   const handleCloseModal = () => {
     console.log(estado.data);
-    deleteData();
-    closeModal(false);
+
+    closeModal({ estado: false, data: "" });
   };
   const deleteData = () => {
     console.log("se empieza a eliminar");
@@ -77,9 +78,12 @@ const ModalDeleteTicket = ({ closeModal, update, estado }) => {
       }
     );
   };
-  const handleDelete = (e) => {};
+  const handleDelete = (e) => {
+    e.preventDefault();
+    deleteData();
+  };
   return (
-    <div className="modal">
+    <div className="modalDelete">
       {error.estado ? (
         <div
           style={{
@@ -93,7 +97,7 @@ const ModalDeleteTicket = ({ closeModal, update, estado }) => {
         </div>
       ) : null}
       {isLoading ? <Loading></Loading> : null}
-      <form className="modalForm" onSubmit={() => {}}>
+      <form className="modalFormDelete" onSubmit={() => {}}>
         <h2>Eliminar Ticket</h2>
         <button onClick={handleDelete}>Guardar</button>
         <button onClick={handleCloseModal}>Cancelar</button>

@@ -104,18 +104,18 @@ const Tickets = (props) => {
       <SerachBar></SerachBar>
 
       <div className="ticketsRow">
-        {isModalDelete.estado ? (
-          <ModalDeleteTicket
-            closeModal={setIsModalDelete}
-            update={getData}
-            estado={isModalDelete}
-          ></ModalDeleteTicket>
-        ) : isModal.estado ? (
+        {isModal.estado ? (
           <ModalTicket
             closeModal={setIsModal}
             update={getData}
             estado={isModal}
           />
+        ) : isModalDelete.estado ? (
+          <ModalDeleteTicket
+            closeModal={setIsModalDelete}
+            update={getData}
+            estado={isModalDelete}
+          ></ModalDeleteTicket>
         ) : null}
         {isLoading ? (
           <Loading></Loading>
