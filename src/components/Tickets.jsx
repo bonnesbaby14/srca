@@ -8,6 +8,7 @@ import "./Tickets.css";
 import TicketCard from "./TicketCard";
 import Loading from "./Loading";
 import ModalTicket from "./ModalTicket";
+import ModalDeleteTicket from "./ModalDeleteTicket";
 
 const Tickets = (props) => {
   //context del usuario
@@ -15,7 +16,9 @@ const Tickets = (props) => {
 
   //handles para edicion del elemento
 
-  const handleRemove = (e, data) => {};
+  const handleRemove = (e, data) => {
+    setIsModalDelete({ estado: true, data: data.data });
+  };
   const handleSend = (e, data) => {};
   //handle para abrir modal para editar usuario
   const handleEdit = (e, data) => {
@@ -35,6 +38,10 @@ const Tickets = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   //estado del modal
   const [isModal, setIsModal] = useState({ estado: false, action: "" });
+  const [isModalDelete, setIsModalDelete] = useState({
+    estado: false,
+    data: "",
+  });
 
   //handle para abrir modal para nuevo usuario
   const handleModal = () => {
@@ -42,7 +49,8 @@ const Tickets = (props) => {
       estado: true,
       action: "new",
       data: {
-        import: "",
+        id: "",
+        _import: "",
         date1: new Date(),
         signature: "firmalink",
         payment: "",
@@ -96,7 +104,13 @@ const Tickets = (props) => {
       <SerachBar></SerachBar>
 
       <div className="ticketsRow">
-        {isModal.estado ? (
+        {isModalDelete.estado ? (
+          <ModalDeleteTicket
+            closeModal={setIsModalDelete}
+            update={getData}
+            estado={isModalDelete}
+          ></ModalDeleteTicket>
+        ) : isModal.estado ? (
           <ModalTicket
             closeModal={setIsModal}
             update={getData}
@@ -107,17 +121,20 @@ const Tickets = (props) => {
           <Loading></Loading>
         ) : (
           datos.tickets.map((ticket) => {
+            const client = datos.clients.find(
+              (client) => client._id === ticket.id_client
+            );
+            const project = datos.projects.find(
+              (project) => project._id === ticket.id_project
+            );
+
             return (
               <ContextMenuTrigger id={ticket._id}>
                 <TicketCard
                   key={ticket._id}
                   {...ticket}
-                  client={datos.clients.find(
-                    async (client) => (await client._id) === ticket.id_client
-                  )}
-                  project={datos.projects.find(
-                    async (project) => (await project._id) === ticket.id_project
-                  )}
+                  client={client}
+                  project={project}
                 />
                 <ContextMenu className="menu" id={ticket._id}>
                   <MenuItem

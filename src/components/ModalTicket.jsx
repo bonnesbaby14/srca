@@ -24,10 +24,11 @@ const ModalClient = ({ closeModal, update, estado }) => {
   const [projects, setProjects] = useState([]);
   const [error, setError] = useState({ estado: false, color: "", texto: "" });
   const [isLoading, setIsLoading] = useState(false);
-  console.log("datos denteo del modal para edit");
-  console.table(estado.data);
+  // console.log("datos denteo del modal para edit");
+  // console.table(estado.data);
   const [data, setdata] = useState({
-    import: estado.data.import,
+    id: estado.data.id,
+    _import: estado.data._import,
     date1: estado.data.date1,
     signature: estado.data.signature,
     payment: estado.data.payment,
@@ -85,7 +86,59 @@ const ModalClient = ({ closeModal, update, estado }) => {
       }
     );
   };
+  const updateData = (data) => {
+    console.log("se empieza a enviar");
+    console.log(JSON.stringify(data));
+    setIsLoading(true);
+    fetch("http://192.168.100.2:5000/updateTicket", {
+      method: "POST",
+      headers: {
+        // Accept: "application/json",
+        Authorization: log.authKey,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then(
+      (data) => {
+        if (data.status === 401) {
+          setUser({ type: "logout" });
+        } else {
+          data.json().then((data) => {
+            if (data.error === "errorData") {
+              setIsLoading(false);
+              setError({
+                estado: true,
+                color: "red",
+                texto: "Ocurrio un error",
+              });
+              handleerror();
+            } else if (data.error === "errorSave") {
+              setIsLoading(false);
+              setError({
+                estado: true,
+                color: "red",
+                texto: "Intenta de nuevo",
+              });
+              handleerror();
+            } else if (data.error === "noError") {
+              setIsLoading(false);
+              setError({
+                estado: true,
+                color: "green",
+                texto: "Guardado con exito",
+              });
+              handleSuccesfull();
+            }
+          });
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  };
   const handleModal = (event) => {
+    console.log(data);
     const datafinal = { ...data };
     datafinal[event.target.id] = event.target.value;
 
@@ -117,6 +170,29 @@ const ModalClient = ({ closeModal, update, estado }) => {
     }
     upData(data);
   };
+  const handleUpdateProject = (e) => {
+    e.preventDefault();
+    const datafinal = { ...data };
+    data.date1 = new Date();
+    if (
+      datafinal.import === "" ||
+      datafinal.payment === "" ||
+      datafinal.signature === "" ||
+      datafinal.id_client === "" ||
+      datafinal.id_project === "" ||
+      datafinal.date1 === ""
+    ) {
+      setError({
+        estado: true,
+        color: "yellow",
+        texto: "Llena todos los datos",
+      });
+      handleerror();
+      return;
+    }
+    updateData(data);
+  };
+
   const getData = () => {
     fetch("http://192.168.100.2:5000/clients", {
       method: "GET",
@@ -188,32 +264,68 @@ const ModalClient = ({ closeModal, update, estado }) => {
         <h2>Agregar Ticket</h2>
 
         <select name="metodo" onChange={handleModal} id="payment">
+          {/* {estado.action === "edit" ? (
+            <option className="option" value={estado.data.payment}>
+              {estado.data.payment}
+            </option>
+          ) : (
+           
+          )} */}
           <option className="option" value="">
             Metodo de pago
           </option>
-
-          <option className="option" value="Efectivo">
+          <option
+            selected
+            className="option"
+            selected={
+              estado.action === "edit" && estado.data.payment === "Efectivo"
+                ? true
+                : false
+            }
+            value="Efectivo"
+          >
             Efectivo
           </option>
-          <option className="option" value="Transferencia">
+          <option
+            selected
+            className="option"
+            selected={
+              estado.action === "edit" &&
+              estado.data.payment === "Transferencia"
+                ? true
+                : false
+            }
+            value="Transferencia"
+          >
             Transferencia
           </option>
         </select>
 
         <input
           onChange={handleModal}
-          id="import"
+          id="_import"
           type="text"
           placeholder="importe"
-          value={data.import}
+          value={data._import}
         />
         <div style={{ display: "flex", flexDirection: "row" }}>
           <select name="cliente" onChange={handleModal} id="id_client">
             <option className="option" value="">
               Cliente
             </option>
+
             {clients.map((client) => (
-              <option className="option" key={client._id} value={client._id}>
+              <option
+                selected={
+                  estado.action === "edit" &&
+                  estado.data.id_client === client._id
+                    ? true
+                    : false
+                }
+                className="option"
+                key={client._id}
+                value={client._id}
+              >
                 {client.name}
               </option>
             ))}
@@ -224,7 +336,17 @@ const ModalClient = ({ closeModal, update, estado }) => {
             </option>
 
             {projects.map((project) => (
-              <option className="option" key={project._id} value={project._id}>
+              <option
+                selected={
+                  estado.action === "edit" &&
+                  estado.data.id_project === project._id
+                    ? true
+                    : false
+                }
+                className="option"
+                key={project._id}
+                value={project._id}
+              >
                 {project.name}
               </option>
             ))}
@@ -233,7 +355,13 @@ const ModalClient = ({ closeModal, update, estado }) => {
         <div className="lienzo">
           <Lienzo></Lienzo>
         </div>
-        <button onClick={handleUpProject}>Guardar</button>
+        <button
+          onClick={
+            estado.action === "new" ? handleUpProject : handleUpdateProject
+          }
+        >
+          Guardar
+        </button>
         <button onClick={handleCloseModal}>Cancelar</button>
       </form>
     </div>
