@@ -17,13 +17,11 @@ const Tickets = (props) => {
   //handles para edicion del elemento
 
   const handleRemove = (e, data) => {
-    setIsModalDelete({ estado: true, data: data.data });
+    setIsModalDelete({ estado: true, data: data.id });
   };
   const handleSend = (e, data) => {};
   //handle para abrir modal para editar usuario
   const handleEdit = (e, data) => {
-    console.log("se ejecuto ");
-    console.table(data.data);
     setIsModal({ estado: true, action: "edit", data: data.data });
   };
 

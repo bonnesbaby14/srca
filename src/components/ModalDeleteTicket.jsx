@@ -29,7 +29,8 @@ const ModalDeleteTicket = ({ closeModal, update, estado }) => {
   };
   const deleteData = () => {
     console.log("se empieza a eliminar");
-    console.log(JSON.stringify(estado.data));
+    const data = { _id: estado.data };
+    console.log(data);
     setIsLoading(true);
     fetch("http://192.168.100.2:5000/removeTicket", {
       method: "POST",
@@ -38,7 +39,7 @@ const ModalDeleteTicket = ({ closeModal, update, estado }) => {
         Authorization: log.authKey,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(estado.data),
+      body: JSON.stringify(data),
     }).then(
       (data) => {
         if (data.status === 401) {
@@ -46,6 +47,7 @@ const ModalDeleteTicket = ({ closeModal, update, estado }) => {
         } else {
           data.json().then((data) => {
             if (data.error === "errorData") {
+              console.log(data);
               setIsLoading(false);
               setError({
                 estado: true,
@@ -99,7 +101,7 @@ const ModalDeleteTicket = ({ closeModal, update, estado }) => {
       {isLoading ? <Loading></Loading> : null}
       <form className="modalFormDelete" onSubmit={() => {}}>
         <h2>Eliminar Ticket</h2>
-        <button onClick={handleDelete}>Guardar</button>
+        <button onClick={handleDelete}>Eliminar</button>
         <button onClick={handleCloseModal}>Cancelar</button>
       </form>
     </div>
