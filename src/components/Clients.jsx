@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../context/contexts";
-
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import CardClient from "./CardClient";
+import { AiOutlineClose, AiFillEdit, AiOutlineSend } from "react-icons/ai";
 import Loading from "./Loading";
 import "./Clients.css";
 import FloatButton from "./FloatButton";
+import ModalDeleteClient from "./ModalDeleteClient";
 
 import SerachBar from "./SearchBar";
 import ModalClient from "./ModalClient";
@@ -13,9 +15,34 @@ const Clients = (props) => {
   const { log, setUser } = useContext(UserContext);
   const [clients, setClients] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isModal, setIsModal] = useState(false);
+  const [isModal, setIsModal] = useState({ estado: false, action: "" });
+  const [isModalDelete, setIsModalDelete] = useState({
+    estado: false,
+    data: "",
+  });
+
+  const handleRemove = (e, data) => {
+    setIsModalDelete({ estado: true, data: data.id });
+  };
+  const handleSend = (e, data) => {};
+  //handle para abrir modal para editar usuario
+  const handleEdit = (e, data) => {
+    setIsModal({ estado: true, action: "edit", data: data.data });
+  };
   const handleModal = () => {
-    setIsModal(true);
+    setIsModal({
+      estado: true,
+      action: "new",
+      data: {
+        _id: "",
+        name: "",
+        phone: "",
+        mail: "",
+        website: "",
+        image: "",
+        date: "",
+      },
+    });
   };
   const getData = () => {
     setIsLoading(true);
@@ -53,13 +80,87 @@ const Clients = (props) => {
     <div className="clientsColumn">
       <SerachBar></SerachBar>
       <div className="clientsRow">
-        {isModal ? (
-          <ModalClient closeModal={setIsModal} update={getData} />
+        {isModal.estado ? (
+          <ModalClient
+            closeModal={setIsModal}
+            update={getData}
+            estado={isModal}
+          />
+        ) : isModalDelete.estado ? (
+          <ModalDeleteClient
+            closeModal={setIsModalDelete}
+            update={getData}
+            estado={isModalDelete}
+          ></ModalDeleteClient>
         ) : null}
         {isLoading ? (
           <Loading></Loading>
         ) : (
-          clients.map((client) => <CardClient key={client._id} {...client} />)
+          clients.map((client) => (
+            <ContextMenuTrigger key={client._id} id={client._id}>
+              <CardClient key={client._id} {...client} />
+              <ContextMenu className="menu" id={client._id}>
+                <MenuItem
+                  onClick={handleRemove}
+                  data={{ id: client._id }}
+                  className="menuItem"
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <AiOutlineClose
+                      style={{ color: "red", marginRight: "5px" }}
+                    />
+
+                    <div>Eliminar</div>
+                  </div>
+                </MenuItem>
+                <MenuItem
+                  onClick={handleEdit}
+                  data={{ data: client }}
+                  className="menuItem"
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <AiFillEdit style={{ color: "blue", marginRight: "5px" }} />
+
+                    <div>Editar</div>
+                  </div>
+                </MenuItem>
+                <MenuItem
+                  onClick={handleSend}
+                  data={{ id: client._id }}
+                  className="menuItem"
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <AiOutlineSend
+                      style={{ color: "green", marginRight: "5px" }}
+                    />
+
+                    <div>Enviar</div>
+                  </div>
+                </MenuItem>
+              </ContextMenu>
+            </ContextMenuTrigger>
+          ))
         )}
         <div onClick={handleModal}>
           <FloatButton></FloatButton>
