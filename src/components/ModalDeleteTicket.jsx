@@ -28,9 +28,8 @@ const ModalDeleteTicket = ({ closeModal, update, estado }) => {
     closeModal({ estado: false, data: "" });
   };
   const deleteData = () => {
-    console.log("se empieza a eliminar");
     const data = { _id: estado.data };
-    console.log(data);
+
     setIsLoading(true);
     fetch("http://192.168.100.2:5000/removeTicket", {
       method: "POST",
