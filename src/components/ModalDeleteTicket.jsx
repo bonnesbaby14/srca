@@ -18,12 +18,12 @@ const ModalDeleteTicket = ({ closeModal, update, estado }) => {
       setError(false);
 
       closeModal({ estado: false, data: "" });
-      console.log("llegue aqui");
+      //   console.log("llegue aqui");
       update();
     }, 1000);
   };
   const handleCloseModal = () => {
-    console.log(estado.data);
+    // console.log(estado.data);
 
     closeModal({ estado: false, data: "" });
   };

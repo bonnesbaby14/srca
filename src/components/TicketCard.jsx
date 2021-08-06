@@ -16,9 +16,9 @@ const handlePDF = () => {
 };
 
 const TicketCard = ({ _id, date, payment, _import, client, project }) => {
-  console.log("datos dento del ");
-  console.log(client._id);
-  console.log(project._id);
+  // console.log("datos dento del ");
+  // console.log(client._id);
+  // console.log(project._id);
 
   return (
     <>

@@ -129,7 +129,7 @@ const Tickets = (props) => {
             );
 
             return (
-              <ContextMenuTrigger id={ticket._id}>
+              <ContextMenuTrigger key={ticket._id} id={ticket._id}>
                 <TicketCard
                   key={ticket._id}
                   {...ticket}

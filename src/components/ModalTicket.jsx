@@ -27,7 +27,7 @@ const ModalClient = ({ closeModal, update, estado }) => {
   // console.log("datos denteo del modal para edit");
   // console.table(estado.data);
   const [data, setdata] = useState({
-    id: estado.data.id,
+    _id: estado.data._id,
     _import: estado.data._import,
     date1: estado.data.date1,
     signature: estado.data.signature,
@@ -87,8 +87,8 @@ const ModalClient = ({ closeModal, update, estado }) => {
     );
   };
   const updateData = (data) => {
-    console.log("se empieza a enviar");
-    console.log(JSON.stringify(data));
+    console.log("se empieza a enviar la actualizacion");
+    console.table(JSON.stringify(data));
     setIsLoading(true);
     fetch("http://192.168.100.2:5000/updateTicket", {
       method: "POST",
@@ -138,7 +138,6 @@ const ModalClient = ({ closeModal, update, estado }) => {
     );
   };
   const handleModal = (event) => {
-    console.log(data);
     const datafinal = { ...data };
     datafinal[event.target.id] = event.target.value;
 
@@ -271,9 +270,10 @@ const ModalClient = ({ closeModal, update, estado }) => {
           ) : (
            
           )} */}
-          <option className="option" value="">
+          <option value="DEFAULT" disabled>
             Metodo de pago
           </option>
+
           <option
             className="option"
             selected={
@@ -308,7 +308,7 @@ const ModalClient = ({ closeModal, update, estado }) => {
         />
         <div style={{ display: "flex", flexDirection: "row" }}>
           <select name="cliente" onChange={handleModal} id="id_client">
-            <option className="option" value="">
+            <option value="DEFAULT" disabled>
               Cliente
             </option>
 
@@ -329,7 +329,7 @@ const ModalClient = ({ closeModal, update, estado }) => {
             ))}
           </select>
           <select name="proyecto" onChange={handleModal} id="id_project">
-            <option className="option" value="">
+            <option value="DEFAULT" disabled>
               Proyecto
             </option>
 
