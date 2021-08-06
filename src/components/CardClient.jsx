@@ -2,7 +2,7 @@ import React from "react";
 
 import "./CardClient.css";
 
-const CardClient = ({ nombre, phone, web }) => {
+const CardClient = ({ name, phone, web }) => {
   return (
     <div className="user-card ">
       <div className="user-cover">
@@ -14,7 +14,7 @@ const CardClient = ({ nombre, phone, web }) => {
         />
       </div>
       <div className="user-details">
-        <div className="user-name ">{nombre}</div>
+        <div className="user-name ">{name}</div>
         <div className="user-name ">{phone}</div>
         <div className="">{web}</div>
       </div>
