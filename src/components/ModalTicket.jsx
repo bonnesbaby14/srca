@@ -263,14 +263,10 @@ const ModalClient = ({ closeModal, update, estado }) => {
         <h2>Agregar Ticket</h2>
 
         <select name="metodo" onChange={handleModal} id="payment">
-          {/* {estado.action === "edit" ? (
-            <option className="option" value={estado.data.payment}>
-              {estado.data.payment}
-            </option>
-          ) : (
-           
-          )} */}
-          <option value="DEFAULT" disabled>
+          <option
+            value="DEFAULT"
+            disabled={estado.action === "now" ? true : false}
+          >
             Metodo de pago
           </option>
 
@@ -308,7 +304,10 @@ const ModalClient = ({ closeModal, update, estado }) => {
         />
         <div style={{ display: "flex", flexDirection: "row" }}>
           <select name="cliente" onChange={handleModal} id="id_client">
-            <option value="DEFAULT" disabled>
+            <option
+              value="DEFAULT"
+              disabled={estado.action === "now" ? true : false}
+            >
               Cliente
             </option>
 
@@ -329,7 +328,10 @@ const ModalClient = ({ closeModal, update, estado }) => {
             ))}
           </select>
           <select name="proyecto" onChange={handleModal} id="id_project">
-            <option value="DEFAULT" disabled>
+            <option
+              value="DEFAULT"
+              disabled={estado.action === "now" ? true : false}
+            >
               Proyecto
             </option>
 
