@@ -352,9 +352,9 @@ const ModalClient = ({ closeModal, update, estado }) => {
             ))}
           </select>
         </div>
-        <div className="lienzo">
+        {/* <div className="lienzo">
           <Lienzo></Lienzo>
-        </div>
+        </div> */}
         <button
           onClick={
             estado.action === "new" ? handleUpProject : handleUpdateProject
