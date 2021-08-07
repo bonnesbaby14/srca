@@ -24,3 +24,14 @@
   position: relative;
   width: 70%;
 }
+
+@media (max-width: 500px) {
+  .course {
+    width: 250px;
+
+    margin: 10px;
+  }
+  .course-preview {
+    width: 5%;
+  }
+}
