@@ -30,3 +30,16 @@ div.bar button {
 div.bar button svg {
   fill: white;
 }
+
+@media (max-width: 500px) {
+  div.bar {
+    height: 40px;
+    width: 250px;
+  }
+  div.bar input {
+    width: 85%;
+  }
+  div.bar button {
+    margin-right: 4px;
+  }
+}
