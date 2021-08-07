@@ -52,3 +52,31 @@
   background: white;
   color: grey;
 }
+
+@media (max-width: 500px) {
+  .modal {
+    width: 80%;
+    height: 550px;
+    border-radius: 10px;
+  }
+  .modalForm {
+    margin-top: 50px;
+    padding: 5px;
+  }
+  .modalForm input {
+    width: 90%;
+    border-radius: 5px;
+    height: 25px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px;
+  }
+  .modalForm button {
+    width: 98%;
+    border-radius: 5px;
+    height: 40px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px;
+  }
+}
