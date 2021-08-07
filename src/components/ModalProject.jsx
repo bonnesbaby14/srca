@@ -278,7 +278,7 @@ const ModalProject = ({ closeModal, update, estado }) => {
           placeholder="Precio"
           value={data.price}
         />
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div className="dates">
           <label htmlFor="">
             Inicio{" "}
             <DatePicker
