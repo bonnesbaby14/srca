@@ -28,9 +28,6 @@
 }
 
 @media (max-width: 545px) {
-  span {
-    display: none;
-  }
   .float-button {
     width: 55px;
     height: 55px;

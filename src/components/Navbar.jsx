@@ -52,11 +52,7 @@ const Navbar = (props) => {
                 <FaHome color="#FFF" size="2em" />
               </div>
               <div className="divSPAN">
-                <span
-                  style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}
-                >
-                  DASHBOARD
-                </span>
+                <span className={sideBar ? "animateSpan" : ""}>DASHBOARD</span>
               </div>
             </li>
           </NavLink>
@@ -67,11 +63,7 @@ const Navbar = (props) => {
                 <FaUserFriends color="#FFF" size="2em" />
               </div>
               <div className="divSPAN">
-                <span
-                  style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}
-                >
-                  CLIENTES
-                </span>
+                <span className={sideBar ? "animateSpan" : ""}>CLIENTES</span>
               </div>
             </li>
           </NavLink>
@@ -81,11 +73,7 @@ const Navbar = (props) => {
                 <FaMobileAlt color="#FFF" size="2em" />
               </div>
               <div className="divSPAN">
-                <span
-                  style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}
-                >
-                  PROYECTOS
-                </span>
+                <span className={sideBar ? "animateSpan" : ""}>PROYECTOS</span>
               </div>
             </li>
           </NavLink>
@@ -95,11 +83,7 @@ const Navbar = (props) => {
                 <FaTicketAlt color="#FFF" size="2em" />
               </div>
               <div className="divSPAN">
-                <span
-                  style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}
-                >
-                  RECIBOS
-                </span>
+                <span className={sideBar ? "animateSpan" : ""}>RECIBOS</span>
               </div>
             </li>
           </NavLink>
@@ -109,9 +93,7 @@ const Navbar = (props) => {
               <FaSignOutAlt color="#FFF" size="2em" />
             </div>
             <div className="divSPAN">
-              <span style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}>
-                LOGOUT
-              </span>
+              <span className={sideBar ? "animateSpan" : ""}>LOGOUT</span>
             </div>
           </li>
           <NavLink to="/settings" className="noStyle">
@@ -120,11 +102,7 @@ const Navbar = (props) => {
                 <FaCog color="#FFF" size="2em" />
               </div>
               <div className="divSPAN">
-                <span
-                  style={sideBar ? { opacity: "1", marginLeft: "0px" } : {}}
-                >
-                  SETTINGS
-                </span>
+                <span className={sideBar ? "animateSpan" : ""}>SETTINGS</span>
               </div>
             </li>
           </NavLink>

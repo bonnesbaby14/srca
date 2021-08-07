@@ -65,6 +65,10 @@
   list-style: none;
   text-decoration: none;
 }
+.animateSpan {
+  opacity: 1 !important;
+  margin-left: 0px !important;
+}
 #sidebar-menu li {
   padding-left: 4px;
   height: 15px;
