@@ -1,5 +1,6 @@
 import { React, Suspense, lazy } from "react";
 import { BrowserRouter as Switch, Route } from "react-router-dom";
+import Loading from "../components/Loading";
 
 import Navbar from "../components/Navbar";
 
@@ -14,7 +15,13 @@ const AppRouter = () => {
   return (
     <>
       <Navbar />
-      <Suspense fallback={<h1 className="text-center">Loading...</h1>}>
+      <Suspense
+        fallback={
+          <div style={{ background: "#323131" }}>
+            <Loading></Loading>
+          </div>
+        }
+      >
         <Switch>
           <Route exact path="/">
             <Dashboard></Dashboard>
