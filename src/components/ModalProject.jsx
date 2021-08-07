@@ -5,16 +5,29 @@ import "./ModalProject.css";
 import Loading from "./Loading";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-const ModalProject = ({ closeModal, update }) => {
-  const [startDateInicio, setStartDateInicio] = useState(new Date());
-  const [startDateFin, setStartDateFin] = useState(null);
+const ModalProject = ({ closeModal, update, estado }) => {
+  console.log("desde proyecto edit");
+  console.table(estado.data);
+  console.log(Date(estado.data.date_start));
+  console.log(Date(estado.data.date_finish));
+  console.log(estado.data.date_finsh || null);
+
+  const [startDateInicio, setStartDateInicio] = useState(
+    Date.parse(estado.data.date_start)
+  );
+  const [startDateFin, setStartDateFin] = useState(
+    Date.parse(estado.data.date_finsh || null)
+  );
+
   const [data, setdata] = useState({
-    name: "",
-    description: "",
-    price: "",
-    date1: startDateInicio,
-    date2: startDateFin,
-    id_cliente: "",
+    _id: estado.data._id,
+    name: estado.data.name,
+    description: estado.data.description,
+    price: estado.data.precio,
+    date1: "",
+    date2: "",
+
+    id_cliente: estado.data.id_cliente,
   });
 
   const { log, setUser } = useContext(UserContext);
@@ -25,6 +38,57 @@ const ModalProject = ({ closeModal, update }) => {
     setTimeout(() => {
       setError(false);
     }, 2000);
+  };
+  const updateData = (data) => {
+    console.log("se empieza a enviar la actualizacion");
+    console.table(JSON.stringify(data));
+    setIsLoading(true);
+    fetch("http://192.168.100.2:5000/updateProject", {
+      method: "POST",
+      headers: {
+        // Accept: "application/json",
+        Authorization: log.authKey,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then(
+      (data) => {
+        if (data.status === 401) {
+          setUser({ type: "logout" });
+        } else {
+          data.json().then((data) => {
+            if (data.error === "errorData") {
+              setIsLoading(false);
+              setError({
+                estado: true,
+                color: "red",
+                texto: "Ocurrio un error",
+              });
+              handleerror();
+            } else if (data.error === "errorSave") {
+              setIsLoading(false);
+              setError({
+                estado: true,
+                color: "red",
+                texto: "Intenta de nuevo",
+              });
+              handleerror();
+            } else if (data.error === "noError") {
+              setIsLoading(false);
+              setError({
+                estado: true,
+                color: "green",
+                texto: "Guardado con exito",
+              });
+              handleSuccesfull();
+            }
+          });
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   };
   const upData = (data) => {
     console.log("se empieza a enviar");
@@ -101,6 +165,8 @@ const ModalProject = ({ closeModal, update }) => {
 
     datafinal.date1 = startDateInicio;
     datafinal.date2 = startDateFin;
+    console.log("esto es en el uo del priyecto");
+    console.table(datafinal);
     if (
       datafinal.name === "" ||
       datafinal.description === "" ||
@@ -116,8 +182,34 @@ const ModalProject = ({ closeModal, update }) => {
       handleerror();
       return;
     }
-    upData(data);
+    upData(datafinal);
     console.log(data);
+  };
+  const handleUpdateProject = (e) => {
+    e.preventDefault();
+
+    const datafinal = { ...data };
+
+    datafinal.date1 = startDateInicio;
+    datafinal.date2 = startDateFin;
+    console.log("esto es en el update del priyecto");
+    console.table(datafinal);
+    if (
+      datafinal.name === "" ||
+      datafinal.description === "" ||
+      datafinal.price === "" ||
+      datafinal.date1 === "" ||
+      datafinal.id_cliente === ""
+    ) {
+      setError({
+        estado: true,
+        color: "yellow",
+        texto: "Llena todos los datos",
+      });
+      handleerror();
+      return;
+    }
+    updateData(datafinal);
   };
   const getData = () => {
     fetch("http://192.168.100.2:5000/clients", {
@@ -208,16 +300,37 @@ const ModalProject = ({ closeModal, update }) => {
           </label>
         </div>
         <select name="cliente" onChange={handleModal} id="id_cliente">
-          <option className="option" value="">
+          <option
+            value="DEFAULT"
+            disabled={estado.action === "now" ? true : false}
+          >
             Cliente
           </option>
+
           {clients.map((client) => (
-            <option className="option" key={client._id} value={client._id}>
+            <option
+              className="option"
+              selected={
+                estado.action === "edit" && estado.data.id_client === client._id
+                  ? true
+                  : false
+              }
+              key={client._id}
+              value={client._id}
+            >
               {client.name}
+              {console.table(estado.data)}
+              {console.table(client._id)}
             </option>
           ))}
         </select>
-        <button onClick={handleUpProject}>Guardar</button>
+        <button
+          onClick={
+            estado.action === "new" ? handleUpProject : handleUpdateProject
+          }
+        >
+          Guardar
+        </button>
         <button onClick={handleCloseModal}>Cancelar</button>
       </form>
     </div>

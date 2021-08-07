@@ -26,6 +26,8 @@ const Proyects = (props) => {
   const handleSend = (e, data) => {};
   //handle para abrir modal para editar usuario
   const handleEdit = (e, data) => {
+    console.log("los datos del edit");
+    console.table(data.data);
     setIsModal({ estado: true, action: "edit", data: data.data });
   };
   const handleModal = () => {
@@ -37,8 +39,8 @@ const Proyects = (props) => {
         name: "",
         description: "",
         price: "",
-        date1: "",
-        date2: "",
+        date1: new Date(),
+        date2: null,
         id_cliente: "",
       },
     });
@@ -79,7 +81,11 @@ const Proyects = (props) => {
     <div className="proyectsColumn">
       <SerachBar></SerachBar>
       {isModal.estado ? (
-        <ModalProject closeModal={setIsModal} update={getData} />
+        <ModalProject
+          closeModal={setIsModal}
+          update={getData}
+          estado={isModal}
+        />
       ) : isModalDelete.estado ? (
         <ModalDeleteProject
           closeModal={setIsModalDelete}

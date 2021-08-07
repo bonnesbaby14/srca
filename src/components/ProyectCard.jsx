@@ -2,11 +2,11 @@ import React from "react";
 
 import "./ProyectCard.css";
 
-const ProyectCard = (props) => {
+const ProyectCard = ({ name, description, date_start, date_finish }) => {
   return (
     <div className="cardProyect">
       <div className="titleProyect">
-        <h3>Card 1</h3>
+        <h3>{name}</h3>
       </div>
 
       <div className="barProyect">
@@ -15,12 +15,13 @@ const ProyectCard = (props) => {
       </div>
 
       <div className="desProyect">
-        <span>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-          temporibus ea provident beatae unde blanditiis libero cumque eligendi
-          ut, odio perferendis nobis eaque, illum eius fugiat distinctio vero
-          aperiam esse.
-        </span>
+        <span>{description}</span>
+      </div>
+      <div className="desProyect">
+        <span>{date_start}</span>
+      </div>
+      <div className="desProyect">
+        <span>{date_finish}</span>
       </div>
     </div>
   );

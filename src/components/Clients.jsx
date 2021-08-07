@@ -27,6 +27,8 @@ const Clients = (props) => {
   const handleSend = (e, data) => {};
   //handle para abrir modal para editar usuario
   const handleEdit = (e, data) => {
+    console.log("los datos del edit");
+    console.table(data.data);
     setIsModal({ estado: true, action: "edit", data: data.data });
   };
   const handleModal = () => {
