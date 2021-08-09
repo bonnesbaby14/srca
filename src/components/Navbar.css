@@ -41,6 +41,7 @@
 .noStyle {
   text-decoration: none;
   font-size: 1rem;
+  cursor: pointer;
 }
 #sidebar-menu li {
   display: flex;
