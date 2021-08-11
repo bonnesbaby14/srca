@@ -31,7 +31,7 @@ const ModalDeleteTicket = ({ closeModal, update, estado }) => {
     const data = { _id: estado.data };
 
     setIsLoading(true);
-    fetch("http://192.168.100.2:5000/removeTicket", {
+    fetch("https://srca-api.gabrielangeles.com/removeTicket", {
       method: "POST",
       headers: {
         // Accept: "application/json",

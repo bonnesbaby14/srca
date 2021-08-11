@@ -61,7 +61,7 @@ const Tickets = (props) => {
   //consulta api rest
   const getData = () => {
     setIsLoading(true);
-    fetch("http://192.168.100.2:5000/tickets", {
+    fetch("https://srca-api.gabrielangeles.com/tickets", {
       method: "GET",
       headers: {
         Accept: "application/json",

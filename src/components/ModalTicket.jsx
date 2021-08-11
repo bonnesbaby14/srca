@@ -39,7 +39,7 @@ const ModalClient = ({ closeModal, update, estado }) => {
     console.log("se empieza a enviar");
     console.log(JSON.stringify(data));
     setIsLoading(true);
-    fetch("http://192.168.100.2:5000/upTicket", {
+    fetch("https://srca-api.gabrielangeles.com/upTicket", {
       method: "POST",
       headers: {
         // Accept: "application/json",
@@ -90,7 +90,7 @@ const ModalClient = ({ closeModal, update, estado }) => {
     console.log("se empieza a enviar la actualizacion");
     console.table(JSON.stringify(data));
     setIsLoading(true);
-    fetch("http://192.168.100.2:5000/updateTicket", {
+    fetch("https://srca-api.gabrielangeles.com/updateTicket", {
       method: "POST",
       headers: {
         // Accept: "application/json",
@@ -193,7 +193,7 @@ const ModalClient = ({ closeModal, update, estado }) => {
   };
 
   const getData = () => {
-    fetch("http://192.168.100.2:5000/clients", {
+    fetch("https://srca-api.gabrielangeles.com/clients", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -216,7 +216,7 @@ const ModalClient = ({ closeModal, update, estado }) => {
         setClients({});
       }
     );
-    fetch("http://192.168.100.2:5000/projects", {
+    fetch("https://srca-api.gabrielangeles.com/projects", {
       method: "GET",
       headers: {
         Accept: "application/json",

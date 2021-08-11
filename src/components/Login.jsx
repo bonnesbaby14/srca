@@ -7,7 +7,7 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://192.168.100.2:5000/login", {
+    fetch("https://srca-api.gabrielangeles.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title: "React POST Request Example" }),

@@ -1,0 +1,79 @@
+.modalDelete {
+  position: absolute;
+  z-index: 100;
+  width: 400px;
+  height: 250px;
+  color: white;
+  border-radius: 15px;
+  background-color: rgba(8, 7, 7, 0.315);
+  backdrop-filter: blur(50px);
+  top: 100px;
+}
+
+.modalFormDelete {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+}
+.modalFormDelete select {
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  width: 90%;
+  color: white;
+  border: 1px white solid;
+  border-radius: 5px;
+  height: 50px;
+
+  margin: auto;
+  margin-top: 20px;
+}
+.modalFormDelete input {
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  width: 90%;
+  color: white;
+  border: 1px white solid;
+  border-radius: 5px;
+  height: 50px;
+
+  margin: auto;
+  margin-top: 20px;
+}
+.option {
+  color: black;
+}
+.modalFormDelete select:focus {
+  outline: none;
+}
+.modalFormDelete select::placeholder {
+  color: white;
+}
+.modalFormDelete input:focus {
+  outline: none;
+}
+.modalFormDelete input::placeholder {
+  color: white;
+}
+.modalFormDelete button {
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  width: 90%;
+  color: white;
+  border: 1px white solid;
+  border-radius: 10px;
+  height: 45px;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 20px;
+}
+.modalFormDelete button:hover {
+  background: white;
+  color: grey;
+}
+
+.lienzo {
+  margin-top: 20px;
+}

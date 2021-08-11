@@ -47,7 +47,7 @@ const Proyects = (props) => {
   };
   const getData = () => {
     setIsLoading(true);
-    fetch("http://192.168.100.2:5000/projects", {
+    fetch("https://srca-api.gabrielangeles.com/projects", {
       method: "GET",
       headers: {
         Accept: "application/json",

@@ -86,7 +86,7 @@ const ModalClient = ({ closeModal, update, estado }) => {
     console.log("se empieza a enviar");
     console.log(JSON.stringify(data));
     setIsLoading(true);
-    fetch("http://192.168.100.2:5000/upClient", {
+    fetch("https://srca-api.gabrielangeles.com/upClient", {
       method: "POST",
       headers: {
         // Accept: "application/json",
@@ -137,7 +137,7 @@ const ModalClient = ({ closeModal, update, estado }) => {
     console.log("se empieza a enviar la actualizacion");
     console.table(JSON.stringify(data));
     setIsLoading(true);
-    fetch("http://192.168.100.2:5000/updateClient", {
+    fetch("https://srca-api.gabrielangeles.com/updateClient", {
       method: "POST",
       headers: {
         // Accept: "application/json",
