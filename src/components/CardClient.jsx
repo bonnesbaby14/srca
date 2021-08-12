@@ -48,7 +48,7 @@ const CardClient = ({ name, phone, web, mail }) => {
                   window.location.href = `tel:${phone}`;
                 }}
               >
-                <FaPhoneAlt></FaPhoneAlt> 33333333
+                <FaPhoneAlt></FaPhoneAlt> Llamar
               </button>
               <button
                 className="contact-user"
