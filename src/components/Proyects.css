@@ -5,6 +5,12 @@
   flex-wrap: wrap;
   flex-direction: row;
   height: 92%;
+  overflow-y: scroll;
+  margin-bottom: 50px;
+  padding-bottom: 60px;
+}
+.proyectsRow::-webkit-scrollbar {
+  display: none;
 }
 .proyectsColumn {
   background: #323131;
