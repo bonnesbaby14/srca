@@ -34,7 +34,7 @@ div.bar button svg {
 @media (max-width: 500px) {
   div.bar {
     height: 40px;
-    width: 250px;
+    width: 300px;
   }
   div.bar input {
     width: 85%;

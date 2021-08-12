@@ -5,10 +5,14 @@
   flex-wrap: wrap;
   flex-direction: row;
   height: 92%;
+  overflow-y: scroll;
+  margin-top: 5px;
+  margin-bottom: 50px;
+  padding-bottom: 60px;
 }
 .clientsColumn {
   background: #323131;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
   width: 100%;

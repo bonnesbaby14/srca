@@ -98,71 +98,7 @@ const Clients = (props) => {
         {isLoading ? (
           <Loading></Loading>
         ) : (
-          clients.map((client) => (
-            <ContextMenuTrigger key={client._id} id={client._id}>
-              <CardClient key={client._id} {...client} />
-              <ContextMenu className="menu" id={client._id}>
-                <MenuItem
-                  onClick={handleRemove}
-                  data={{ id: client._id }}
-                  className="menuItem"
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <AiOutlineClose
-                      style={{ color: "red", marginRight: "5px" }}
-                    />
-
-                    <div>Eliminar</div>
-                  </div>
-                </MenuItem>
-                <MenuItem
-                  onClick={handleEdit}
-                  data={{ data: client }}
-                  className="menuItem"
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <AiFillEdit style={{ color: "blue", marginRight: "5px" }} />
-
-                    <div>Editar</div>
-                  </div>
-                </MenuItem>
-                <MenuItem
-                  onClick={handleSend}
-                  data={{ id: client._id }}
-                  className="menuItem"
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <AiOutlineSend
-                      style={{ color: "green", marginRight: "5px" }}
-                    />
-
-                    <div>Enviar</div>
-                  </div>
-                </MenuItem>
-              </ContextMenu>
-            </ContextMenuTrigger>
-          ))
+          clients.map((client) => <CardClient key={client._id} {...client} />)
         )}
         <div onClick={handleModal}>
           <FloatButton></FloatButton>

@@ -1,16 +1,13 @@
 .user-card {
-  margin: 35px;
   background: white;
-  width: 230px;
-  height: 320px;
-  box-shadow: -10px 5px 20px rgba(145, 145, 145, 0.301);
-  border-radius: 15px;
-  overflow: hidden;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   transition: box-shadow 0.2s ease-in;
+  height: 100%;
+  width: 100%;
 }
 
 .user-card:hover {
@@ -39,15 +36,17 @@
 .user-card .user-details {
   text-align: center;
   margin-top: 25px;
-  margin-bottom: 15px;
+  margin-bottom: 75px;
   width: 80%;
+  font-size: 2rem;
 }
 
 .user-card .user-details2 {
   text-align: center;
-  margin-top: 0px;
-  margin-bottom: 75px;
+  margin-top: 20px;
+
   width: 80%;
+  color: black;
 }
 .user-card .user-details2 .user-name1 {
   font-size: 2rem;
@@ -71,19 +70,23 @@
 }
 
 .flip-card {
-  background-color: transparent;
+  margin: 35px;
+
   width: 230px;
   height: 320px;
-  perspective: 1000px;
-  margin: 20px;
+  /* box-shadow: -10px 5px 20px rgba(145, 145, 145, 0.301); */
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .flip-card-inner {
   position: relative;
-
+  width: 100%;
+  height: 100%;
   text-align: center;
-  transition: transform 0.6s;
+  transition: transform 0.3s;
   transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .flip-card:hover .flip-card-inner {
@@ -93,32 +96,56 @@
 .flip-card-front,
 .flip-card-back {
   position: absolute;
-
+  width: 100%;
+  height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
 .flip-card-front {
+  background-color: #bbb;
+  color: black;
 }
 
 .flip-card-back {
+  background-color: #2980b9;
+  color: white;
   transform: rotateY(180deg);
 }
 
 @media (max-width: 500px) {
-  .user-card {
+  .flip-card {
     margin: 5px;
     border-radius: 10px;
-    height: 160px;
+    height: 200px;
   }
+
   .user-card .user-details {
     margin-top: 0px;
-    margin-bottom: 0px;
-    font-size: 0.7rem;
+    margin-bottom: 60px;
+    font-size: 1.7rem;
   }
   .user-card .user-cover .user-avatar {
     width: 40px;
     height: 40px;
     bottom: 7px;
+  }
+  .user-card .user-cover {
+    height: 55px;
+  }
+  .user-card .contact-user {
+    margin-bottom: 10px;
+    height: 30px;
+    width: 80%;
+    border: 0;
+    color: dodgerblue;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .user-card .user-details2 {
+    text-align: center;
+    margin-top: 10px;
   }
 }

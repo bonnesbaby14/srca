@@ -15,11 +15,12 @@ const CardClient = ({ name, phone, web }) => {
                 alt="user profile"
               />
             </div>
-            <div className="user-details2">
+            <div className="user-details">
               <div className="user-name1 ">{name}</div>
             </div>
           </div>
         </div>
+
         <div className="flip-card-back">
           <div className="user-card ">
             <div className="user-cover">
@@ -29,7 +30,7 @@ const CardClient = ({ name, phone, web }) => {
                 alt="user profile"
               />
             </div>
-            <div className="user-details">
+            <div className="user-details2">
               <div className="user-name ">{name}</div>
             </div>
             <div className="content">
