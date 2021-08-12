@@ -1,8 +1,8 @@
 .user-card {
-  margin: 20px;
+  margin: 35px;
   background: white;
   width: 230px;
-  height: 300px;
+  height: 320px;
   box-shadow: -10px 5px 20px rgba(145, 145, 145, 0.301);
   border-radius: 15px;
   overflow: hidden;
@@ -11,7 +11,6 @@
   align-items: center;
   justify-content: space-between;
   transition: box-shadow 0.2s ease-in;
-  cursor: pointer;
 }
 
 .user-card:hover {
@@ -39,19 +38,19 @@
 
 .user-card .user-details {
   text-align: center;
-  margin-top: 35px;
-  margin-bottom: 25px;
+  margin-top: 25px;
+  margin-bottom: 15px;
   width: 80%;
 }
 
-.user-card .user-details .user-name {
-  margin-bottom: 10px;
-  text-transform: uppercase;
+.user-card .user-details2 {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 75px;
+  width: 80%;
 }
-
-.user-card .user-details .user-email {
-  font-size: 12px;
-  color: #666;
+.user-card .user-details2 .user-name1 {
+  font-size: 2rem;
 }
 
 .user-card .contact-user {
@@ -64,6 +63,46 @@
   letter-spacing: 0.5px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.content {
+  opacity: 1;
+  transition-duration: 1s;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 230px;
+  height: 320px;
+  perspective: 1000px;
+  margin: 20px;
+}
+
+.flip-card-inner {
+  position: relative;
+
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
 }
 
 @media (max-width: 500px) {
