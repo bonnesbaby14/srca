@@ -10,6 +10,9 @@
   margin-bottom: 50px;
   padding-bottom: 60px;
 }
+.clientsRow::-webkit-scrollbar {
+  display: none;
+}
 .clientsColumn {
   background: #323131;
   justify-content: space-around;
