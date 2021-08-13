@@ -6,6 +6,12 @@
   flex-direction: row;
   margin-top: 10px;
   height: 90%;
+  overflow-y: scroll;
+  margin-bottom: 50px;
+  padding-bottom: 60px;
+}
+.ticketsRow::-webkit-scrollbar {
+  display: none;
 }
 .ticketsColumn {
   display: flex;
