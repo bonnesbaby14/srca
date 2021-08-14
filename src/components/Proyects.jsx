@@ -14,7 +14,7 @@ import ModalDeleteProject from "./ModalDeleteProject";
 const Proyects = (props) => {
   const { log, setUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState({ clients: [], projects: [] });
   const [isModal, setIsModal] = useState({ estado: false, action: "" });
   const [isModalDelete, setIsModalDelete] = useState({
     estado: false,
@@ -60,15 +60,18 @@ const Proyects = (props) => {
           setUser({ type: "logout" });
         } else {
           data.json().then((data) => {
-            setIsLoading(false);
             setProjects(data);
+            setIsLoading(false);
           });
+          console.log("datos");
+          console.log(projects);
         }
       },
       (err) => {
         console.log(err);
+        console.log("hubo un erro");
         setIsLoading(false);
-        setProjects({});
+        setProjects({ clients: [], projects: [] });
       }
     );
   };
@@ -77,6 +80,7 @@ const Proyects = (props) => {
     getData();
   }, []);
 
+  console.log(projects);
   return (
     <div className="proyectsColumn">
       <SerachBar></SerachBar>
@@ -97,71 +101,80 @@ const Proyects = (props) => {
         {isLoading ? (
           <Loading></Loading>
         ) : (
-          projects.map((project) => (
-            <ContextMenuTrigger key={project._id} id={project._id}>
-              <ProyectCard key={project._id} {...project} />
-              <ContextMenu className="menu" id={project._id}>
-                <MenuItem
-                  onClick={handleRemove}
-                  data={{ id: project._id }}
-                  className="menuItem"
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
+          projects.projects.map((project) => {
+            const client = projects.clients.find(
+              (client) => client._id === project.id_client
+            );
+            console.log("Este es el cliente de la igualcion:  ");
+            console.log(client);
+            return (
+              <ContextMenuTrigger key={project._id} id={project._id}>
+                <ProyectCard key={project._id} {...project} cliente={client} />
+                <ContextMenu className="menu" id={project._id}>
+                  <MenuItem
+                    onClick={handleRemove}
+                    data={{ id: project._id }}
+                    className="menuItem"
                   >
-                    <AiOutlineClose
-                      style={{ color: "red", marginRight: "5px" }}
-                    />
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <AiOutlineClose
+                        style={{ color: "red", marginRight: "5px" }}
+                      />
 
-                    <div>Eliminar</div>
-                  </div>
-                </MenuItem>
-                <MenuItem
-                  onClick={handleEdit}
-                  data={{ data: project }}
-                  className="menuItem"
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
+                      <div>Eliminar</div>
+                    </div>
+                  </MenuItem>
+                  <MenuItem
+                    onClick={handleEdit}
+                    data={{ data: project }}
+                    className="menuItem"
                   >
-                    <AiFillEdit style={{ color: "blue", marginRight: "5px" }} />
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <AiFillEdit
+                        style={{ color: "blue", marginRight: "5px" }}
+                      />
 
-                    <div>Editar</div>
-                  </div>
-                </MenuItem>
-                <MenuItem
-                  onClick={handleSend}
-                  data={{ id: project._id }}
-                  className="menuItem"
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
+                      <div>Editar</div>
+                    </div>
+                  </MenuItem>
+                  <MenuItem
+                    onClick={handleSend}
+                    data={{ id: project._id }}
+                    className="menuItem"
                   >
-                    <AiOutlineSend
-                      style={{ color: "green", marginRight: "5px" }}
-                    />
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <AiOutlineSend
+                        style={{ color: "green", marginRight: "5px" }}
+                      />
 
-                    <div>Enviar</div>
-                  </div>
-                </MenuItem>
-              </ContextMenu>
-            </ContextMenuTrigger>
-          ))
+                      <div>Enviar</div>
+                    </div>
+                  </MenuItem>
+                </ContextMenu>
+              </ContextMenuTrigger>
+            );
+          })
         )}
       </div>
       <div onClick={handleModal}>
