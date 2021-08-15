@@ -45,73 +45,108 @@ const Navbar = (props) => {
             <img src="./assets/logo.png" alt="Logo" />
           </div>
         </div>
-        <ul>
-          <NavLink exact to="/" className="noStyle" activeClassName="active">
-            <li className="">
-              <div className="divSVG">
-                <FaHome color="#FFF" size="2em" />
-              </div>
-              <div className="divSPAN">
-                <span className={sideBar ? "animateSpan" : ""}>DASHBOARD</span>
-              </div>
-            </li>
-          </NavLink>
+        <div className="menucontrol">
+          <div className="top">
+            <ul>
+              <NavLink
+                exact
+                to="/"
+                className="noStyle"
+                activeClassName="active"
+              >
+                <li className="">
+                  <div className="divSVG">
+                    <FaHome color="#FFF" size="2em" />
+                  </div>
+                  <div className="divSPAN">
+                    <span className={sideBar ? "animateSpan" : ""}>
+                      DASHBOARD
+                    </span>
+                  </div>
+                </li>
+              </NavLink>
 
-          <NavLink to="/clients" className="noStyle" activeClassName="active">
-            <li className="">
-              <div className="divSVG">
-                <FaUserFriends color="#FFF" size="2em" />
-              </div>
-              <div className="divSPAN">
-                <span className={sideBar ? "animateSpan" : ""}>CLIENTES</span>
-              </div>
-            </li>
-          </NavLink>
-          <NavLink to="/proyects" className="noStyle" activeClassName="active">
-            <li className="">
-              <div className="divSVG">
-                <FaMobileAlt color="#FFF" size="2em" />
-              </div>
-              <div className="divSPAN">
-                <span className={sideBar ? "animateSpan" : ""}>PROYECTOS</span>
-              </div>
-            </li>
-          </NavLink>
-          <NavLink to="/tickets" className="noStyle" activeClassName="active">
-            <li className="">
-              <div className="divSVG">
-                <FaTicketAlt color="#FFF" size="2em" />
-              </div>
-              <div className="divSPAN">
-                <span className={sideBar ? "animateSpan" : ""}>RECIBOS</span>
-              </div>
-            </li>
-          </NavLink>
+              <NavLink
+                to="/clients"
+                className="noStyle"
+                activeClassName="active"
+              >
+                <li className="">
+                  <div className="divSVG">
+                    <FaUserFriends color="#FFF" size="2em" />
+                  </div>
+                  <div className="divSPAN">
+                    <span className={sideBar ? "animateSpan" : ""}>
+                      CLIENTES
+                    </span>
+                  </div>
+                </li>
+              </NavLink>
+              <NavLink
+                to="/proyects"
+                className="noStyle"
+                activeClassName="active"
+              >
+                <li className="">
+                  <div className="divSVG">
+                    <FaMobileAlt color="#FFF" size="2em" />
+                  </div>
+                  <div className="divSPAN">
+                    <span className={sideBar ? "animateSpan" : ""}>
+                      PROYECTOS
+                    </span>
+                  </div>
+                </li>
+              </NavLink>
+              <NavLink
+                to="/tickets"
+                className="noStyle"
+                activeClassName="active"
+              >
+                <li className="">
+                  <div className="divSVG">
+                    <FaTicketAlt color="#FFF" size="2em" />
+                  </div>
+                  <div className="divSPAN">
+                    <span className={sideBar ? "animateSpan" : ""}>
+                      RECIBOS
+                    </span>
+                  </div>
+                </li>
+              </NavLink>
 
-          <li
-            className=""
-            onClick={handleLogout}
-            className="noStyle"
-            activeClassName="active"
-          >
-            <div className="divSVG">
-              <FaSignOutAlt color="#FFF" size="2em" />
-            </div>
-            <div className="divSPAN">
-              <span className={sideBar ? "animateSpan" : ""}>LOGOUT</span>
-            </div>
-          </li>
-          <NavLink to="/settings" className="noStyle" activeClassName="active">
-            <li className="">
-              <div className="divSVG">
-                <FaCog color="#FFF" size="2em" />
-              </div>
-              <div className="divSPAN">
-                <span className={sideBar ? "animateSpan" : ""}>SETTINGS</span>
-              </div>
-            </li>
-          </NavLink>
-        </ul>
+              <li
+                className=""
+                onClick={handleLogout}
+                className="noStyle"
+                activeClassName="active"
+              >
+                <div className="divSVG">
+                  <FaSignOutAlt color="#FFF" size="2em" />
+                </div>
+                <div className="divSPAN">
+                  <span className={sideBar ? "animateSpan" : ""}>LOGOUT</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div className="botton">
+            <NavLink
+              to="/settings"
+              className="noStyle"
+              activeClassName="active"
+            >
+              <li className="">
+                <div className="divSVG">
+                  <FaCog color="#FFF" size="2em" />
+                </div>
+                <div className="divSPAN">
+                  <span className={sideBar ? "animateSpan" : ""}>SETTINGS</span>
+                </div>
+              </li>
+            </NavLink>
+          </div>
+        </div>
       </div>
     </div>
   );

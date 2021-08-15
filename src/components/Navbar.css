@@ -81,7 +81,17 @@
   margin-left: 10px;
 }
 
+.menucontrol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 93%;
+}
+
 @media (max-width: 500px) {
+  .menucontrol {
+    height: 83%;
+  }
   #sidebar-menu {
     width: 40px;
   }
