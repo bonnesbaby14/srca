@@ -47,7 +47,7 @@ const Proyects = (props) => {
   };
   const getData = () => {
     setIsLoading(true);
-    fetch("https://srca-api.gabrielangeles.com/projects", {
+    fetch("https://srcaapi.gabrielangeles.com/projects", {
       method: "GET",
       headers: {
         Accept: "application/json",

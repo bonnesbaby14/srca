@@ -61,7 +61,7 @@ const Tickets = (props) => {
   //consulta api rest
   const getData = () => {
     setIsLoading(true);
-    fetch("https://srca-api.gabrielangeles.com/tickets", {
+    fetch("https://srcaapi.gabrielangeles.com/tickets", {
       method: "GET",
       headers: {
         Accept: "application/json",

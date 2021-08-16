@@ -48,7 +48,7 @@ const Clients = (props) => {
   };
   const getData = () => {
     setIsLoading(true);
-    fetch("https://srca-api.gabrielangeles.com/clients", {
+    fetch("https://srcaapi.gabrielangeles.com/clients", {
       method: "GET",
       headers: {
         Accept: "application/json",

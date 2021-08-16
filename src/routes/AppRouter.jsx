@@ -23,13 +23,11 @@ const AppRouter = () => {
         }
       >
         <Switch>
-          <Route exact path="/">
-            <Dashboard></Dashboard>
-          </Route>
           <Route exact path="/settings" component={Settings} />
           <Route exact path="/clients" component={Clients} />
           <Route exact path="/proyects" component={Proyects} />
           <Route exact path="/tickets" component={Tickets} />
+          <Route exact path="/" component={Dashboard} />
         </Switch>
       </Suspense>
     </>

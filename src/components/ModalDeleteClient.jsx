@@ -32,7 +32,7 @@ const ModalDeleteClient = ({ closeModal, update, estado }) => {
     console.log(data);
 
     setIsLoading(true);
-    fetch("https://srca-api.gabrielangeles.com/removeClient", {
+    fetch("https://srcaapi.gabrielangeles.com/removeClient", {
       method: "POST",
       headers: {
         // Accept: "application/json",

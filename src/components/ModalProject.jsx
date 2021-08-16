@@ -43,7 +43,7 @@ const ModalProject = ({ closeModal, update, estado }) => {
     console.log("se empieza a enviar la actualizacion");
     console.table(JSON.stringify(data));
     setIsLoading(true);
-    fetch("https://srca-api.gabrielangeles.com/updateProject", {
+    fetch("https://srcaapi.gabrielangeles.com/updateProject", {
       method: "POST",
       headers: {
         // Accept: "application/json",
@@ -94,7 +94,7 @@ const ModalProject = ({ closeModal, update, estado }) => {
     console.log("se empieza a enviar");
     console.log(JSON.stringify(data));
     setIsLoading(true);
-    fetch("https://srca-api.gabrielangeles.com/upProject", {
+    fetch("https://srcaapi.gabrielangeles.com/upProject", {
       method: "POST",
       headers: {
         // Accept: "application/json",
@@ -212,7 +212,7 @@ const ModalProject = ({ closeModal, update, estado }) => {
     updateData(datafinal);
   };
   const getData = () => {
-    fetch("https://srca-api.gabrielangeles.com/clients", {
+    fetch("https://srcaapi.gabrielangeles.com/clients", {
       method: "GET",
       headers: {
         Accept: "application/json",

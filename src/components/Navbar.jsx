@@ -20,7 +20,7 @@ const Navbar = (props) => {
 
   const handleLogout = async (e) => {
     await e.preventDefault();
-    const data = await fetch("https://srca-api.gabrielangeles.com/logout", {
+    const data = await fetch("https://srcaapi.gabrielangeles.com/logout", {
       method: "GET",
       headers: {
         Accept: "application/json",
