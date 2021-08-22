@@ -47,7 +47,38 @@ const Proyects = (props) => {
   };
   const getData = () => {
     setIsLoading(true);
-    fetch("https://srcaapi.gabrielangeles.com/projects", {
+    fetch("http://localhost:5000/projects", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: log.authKey,
+        // 'Content-Type': 'application/json'
+      },
+    }).then(
+      (data) => {
+        if (data.status === 401) {
+          setUser({ type: "logout" });
+        } else {
+          data.json().then((data) => {
+            setProjects(data);
+            setIsLoading(false);
+          });
+          console.log("datos");
+          console.log(projects);
+        }
+      },
+      (err) => {
+        console.log(err);
+        console.log("hubo un erro");
+        setIsLoading(false);
+        setProjects({ clients: [], projects: [] });
+      }
+    );
+  };
+
+  const getEspecificData = () => {
+    setIsLoading(true);
+    fetch("http://localhost:5000/projects", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -83,7 +114,7 @@ const Proyects = (props) => {
   console.log(projects);
   return (
     <div className="proyectsColumn">
-      <SerachBar></SerachBar>
+      <SerachBar getdata={getEspecificData}></SerachBar>
       {isModal.estado ? (
         <ModalProject
           closeModal={setIsModal}
