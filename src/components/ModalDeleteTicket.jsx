@@ -31,7 +31,7 @@ const ModalDeleteTicket = ({ closeModal, update, estado }) => {
     const data = { _id: estado.data };
 
     setIsLoading(true);
-    fetch("http://localhost:5000/removeTicket", {
+    fetch("https://srcaapi.gabrielangeles.com/removeTicket", {
       method: "POST",
       headers: {
         // Accept: "application/json",

@@ -29,7 +29,7 @@ const ModalDeleteProject = ({ closeModal, update, estado }) => {
   };
   const deleteData = () => {
     setIsLoading(true);
-    fetch("http://localhost:5000/removeProject", {
+    fetch("https://srcaapi.gabrielangeles.com/removeProject", {
       method: "POST",
       headers: {
         Accept: "application/json",

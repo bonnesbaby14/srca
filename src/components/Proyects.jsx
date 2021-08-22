@@ -47,7 +47,7 @@ const Proyects = (props) => {
   };
   const getData = () => {
     setIsLoading(true);
-    fetch("http://localhost:5000/projects", {
+    fetch("https://srcaapi.gabrielangeles.com/projects", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -78,7 +78,7 @@ const Proyects = (props) => {
 
   const getEspecificData = () => {
     setIsLoading(true);
-    fetch("http://localhost:5000/projects", {
+    fetch("https://srcaapi.gabrielangeles.com/projects", {
       method: "GET",
       headers: {
         Accept: "application/json",
