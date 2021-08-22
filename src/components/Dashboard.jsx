@@ -4,6 +4,7 @@ import DashboardCard from "./DashboardCard";
 import { Line } from "react-chartjs-2";
 import "./Dashboard.css";
 
+import { FaTicketAlt, FaUser, FaPager } from "react-icons/fa";
 import { FaSistrix } from "react-icons/fa";
 
 const Dashboard = (props) => {
@@ -51,9 +52,21 @@ const Dashboard = (props) => {
           <Line data={data} options={options} />
         </div>
         <div className="two">
-          <div className="card"></div>
-          <div className="card"></div>
-          <div className="card"></div>
+          <div className="card">
+            <FaTicketAlt></FaTicketAlt>
+            <h1>Tickets</h1>
+            <span>13</span>
+          </div>
+          <div className="card">
+            <FaUser />
+            <h1>Clientes</h1>
+            <span>5</span>
+          </div>
+          <div className="card">
+            <FaPager></FaPager>
+            <h1>Proyectos</h1>
+            <span>21</span>
+          </div>
         </div>
       </div>
       <div className="second"></div>
